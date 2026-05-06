@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show Crew Network - Leadership Update (Reviews)</title>
+  <title>Show Crew Network - Demo 6th May 2026</title>
   <style>
     :root {
       --bg: #f7f8fb;
@@ -182,15 +182,15 @@
 </head>
 <body>
   <header class="hero">
-    <h1>Show Crew Network - Leadership Update</h1>
-    <p>Review System Updates (Company reviews Crew, Crew feedback loop, and rating aggregation updates) + related platform improvements from the last 7 days.</p>
-    <div class="meta">Internal Leadership Deck - May 2026</div>
+    <h1>Show Crew Network - Demo 6th May 2026</h1>
+    <p>Reviews, Bulk Call Editor, Admin Skills Management, Call Specialties, Minimum Hours enforcement, and AI scheduling improvements.</p>
+    <div class="meta">Show Crew Network &mdash; May 6, 2026</div>
   </header>
 
   <main class="wrap">
     <section class="card">
-      <h2>1) What We Shipped (Last 7 Days)</h2>
-      <p class="sub">This page has been reset and rebuilt for current update reporting. Old presentation content has been cleared.</p>
+      <h2>1) What We Shipped</h2>
+      <p class="sub">Platform updates shipped across reviews, scheduling, skills taxonomy, AI generation, and admin tooling.</p>
       <div class="kpi-grid">
         <div class="kpi">
           <div class="label">Accepted Offer Tracking</div>
@@ -220,72 +220,7 @@
     </section>
 
     <section class="card">
-      <h2>2) Reviews - Company Reviewing Crew</h2>
-      <p class="sub">Company-side review workflow for completed jobs.</p>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>Company Actions <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Create review only after job is completed.</li>
-            <li>Prevent duplicate review for same reviewer/reviewee/job tuple.</li>
-            <li>Validate category ratings (1-5) across allowed crew categories.</li>
-            <li>Edit own review within 30 days.</li>
-            <li>Block edits after crew has responded.</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>System Effects <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Recalculate crew avgRating and totalRatings on create/edit.</li>
-            <li>Persist aggregated categoryRatings on crew profile record.</li>
-            <li>Publish review.created event for async notifications/audit.</li>
-            <li>Show review summaries in company Reviews tab UI.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>3) Reviews - Crew Reviewing Company / Feedback Loop</h2>
-      <p class="sub">Current crew-side capabilities and data model readiness.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Capability</th>
-            <th>Status</th>
-            <th>What Is In Place</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Two-sided review data model</td>
-            <td><span class="status done">LIVE</span></td>
-            <td>reviewerType supports crew or company; APIs resolve reviewer/reviewee names both directions.</td>
-          </tr>
-          <tr>
-            <td>Crew review feed visibility</td>
-            <td><span class="status done">LIVE</span></td>
-            <td>Crew API supports get reviews for user and for job with enriched names/titles.</td>
-          </tr>
-          <tr>
-            <td>Crew response to company review</td>
-            <td><span class="status done">LIVE</span></td>
-            <td>Crew can submit one response to a company-authored review about themselves.</td>
-          </tr>
-          <tr>
-            <td>Dedicated crew create-review endpoint</td>
-            <td><span class="status inprogress">NEXT</span></td>
-            <td>Planned as explicit crew-authored review submission path where required by product workflow.</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="note">
-        Leadership note: the system already supports two-way review records and crew-side visibility/response. If we want explicit crew-authored creation UX/API as a separate step, that is the next increment.
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>4) Review-Related UX Improvements</h2>
+      <h2>2) Review-Related UX Improvements</h2>
       <div class="flow-grid">
         <div class="flow">
           <h3>Company Reviews Tab</h3>
@@ -309,7 +244,7 @@
     </section>
 
     <section class="card">
-      <h2>5) Bulk Call Editor - Mass Schedule Updates</h2>
+      <h2>3) Bulk Call Editor - Mass Schedule Updates</h2>
       <p class="sub">Company operators can bulk-edit call times, types, or import/export via spreadsheet for rapid schedule updates.</p>
       <div class="flow-grid">
         <div class="flow">
@@ -371,7 +306,7 @@
     </section>
 
     <section class="card">
-      <h2>6) Admin Skills Management - Taxonomy & Call Type Restrictions</h2>
+      <h2>4) Admin Skills Management - Taxonomy & Call Type Restrictions</h2>
       <p class="sub">Internal admin portal for managing the skill taxonomy, minimum hours, specialties, and allowed call types per discipline.</p>
       <div class="flow-grid">
         <div class="flow">
@@ -405,8 +340,8 @@
     </section>
 
     <section class="card">
-      <h2>7) Review Lifecycle Screens (Arranged)</h2>
-      <p class="sub">All screenshots below are loaded from the photos folder and arranged in product flow order for leadership review.</p>
+      <h2>5) Review Lifecycle Screens</h2>
+      <p class="sub">Screenshots arranged in product flow order: company submits review, crew sees and responds, notification loop closes.</p>
 
       <h3 class="gallery-title">A. Company Initiates and Submits Review</h3>
       <div class="photo-grid">
@@ -470,7 +405,7 @@
     </section>
 
     <section class="card">
-      <h2>8) Call Specialties & Minimum Hours - Skill-Based Constraints</h2>
+      <h2>6) Call Specialties & Minimum Hours - Skill-Based Constraints</h2>
       <p class="sub">Fine-grained skill requirements tied to individual positions and call types. Enforced during position creation, offer workflow, and job publishing.</p>
       <div class="flow-grid">
         <div class="flow">
@@ -485,17 +420,57 @@
         <div class="flow">
           <h3>Minimum Hours Per Skill <span class="status done">LIVE</span></h3>
           <ul>
-            <li>Admin sets minimum hours (0–10, step 0.25) per discipline (e.g., "Lighting Director: 200 hours minimum").</li>
+            <li>Admin sets minimum hours (0–10, step 0.25) per discipline.</li>
             <li>When company sends an offer, minimum hours displayed to crew so they know qualification bar.</li>
-            <li>When company adds a call for crew profile with fewer than minimum hours: warning banner shown with reason.</li>
-            <li>Prevents accidental under-qualified hires while allowing override if intentional.</li>
+            <li>When company adds a call for crew with fewer than minimum hours: warning banner shown inline on the position.</li>
+            <li>Example: Stagehand position shows "5 under 4hr min" badge — prevents accidental under-qualified hires.</li>
           </ul>
+        </div>
+      </div>
+
+      <h3 class="gallery-title">A. Call Type Filtering Per Position (Visual Scheduler)</h3>
+      <div class="photo-grid">
+        <div class="shot">
+          <img src="photos/Call-Selection-1.png" alt="Visual scheduler showing call types per position">
+          <div class="cap">Visual scheduler: each position gets only its allowed call types. Color-coded blocks show Load In, Rehearsal, Onsite Call, Show, Strike etc. correctly assigned per role.</div>
+        </div>
+      </div>
+
+      <h3 class="gallery-title">B. Shop Call — Wardrobe-Only Example</h3>
+      <div class="photo-grid">
+        <div class="shot">
+          <img src="photos/Call-Selection-Shop-Call.png" alt="Shop Call restricted to Wardrobe Assistant">
+          <div class="cap">Shop Call only appears for Wardrobe Assistant — not Production Assistant, Ground Rigger, etc. Admin-defined call type restriction enforced live in the scheduler.</div>
+        </div>
+      </div>
+
+      <h3 class="gallery-title">C. Minimum Hours Warning on Position</h3>
+      <div class="photo-grid">
+        <div class="shot">
+          <img src="photos/StageHand-Call-Warning.png" alt="Stagehand minimum hours warning badge">
+          <div class="cap">Stagehand position showing "5 under 4hr min" warning badge inline — visible to company as they build the schedule before publishing.</div>
+        </div>
+      </div>
+
+      <h3 class="gallery-title">D. Admin: Adding & Editing Skills with Specialties + Call Types</h3>
+      <div class="photo-grid">
+        <div class="shot">
+          <img src="photos/Admin-Add-SKill.png" alt="Add Skill dialog with specialties, scheduling hint, and call types">
+          <div class="cap">Add Skill dialog: name, category, aliases, specialties (comma-separated), scheduling hint for AI, min hours toggle, and allowed call type chip-selector.</div>
+        </div>
+        <div class="shot">
+          <img src="photos/Admin-Edit-Skill.png" alt="Edit Skill dialog showing Forklift Op with specialties and all call types selected">
+          <div class="cap">Edit Skill for Forklift Op: specialties "Truck Loading, Dock Ops, Pallet Handling, Outdoor Yard Moves" and scheduling hint for AI. All 9 call types selected = unrestricted.</div>
+        </div>
+        <div class="shot">
+          <img src="photos/Admin-Add-MinimumHours.png" alt="Minimum hours toggle enabled with hours input">
+          <div class="cap">Minimum hours enabled on a skill: toggle on, hours field active. Allowed Call Types below restrict which call types can be scheduled for this discipline.</div>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h2>9) AI Call Generation Improvements - Skill-Aware Scheduling</h2>
+      <h2>7) AI Call Generation Improvements - Skill-Aware Scheduling</h2>
       <p class="sub">AI schedule generator now uses live skill taxonomy, specialties, and call type restrictions for smarter call assignments.</p>
       <div class="flow-grid">
         <div class="flow">
@@ -520,7 +495,7 @@
     </section>
 
     <section class="card">
-      <h2>10) Open Questions & Blockers</h2>
+      <h2>8) Open Questions & Blockers</h2>
       <p class="sub">Known items pending clarification or external dependencies.</p>
       <table>
         <thead>
@@ -550,7 +525,7 @@
   </main>
 
   <footer class="footer">
-    Show Crew Network - Engineering update for leadership demo.
+    Show Crew Network &mdash; Demo 6th May 2026
   </footer>
 </body>
 </html>
