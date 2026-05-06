@@ -468,6 +468,85 @@
         </div>
       </div>
     </section>
+
+    <section class="card">
+      <h2>8) Call Specialties & Minimum Hours - Skill-Based Constraints</h2>
+      <p class="sub">Fine-grained skill requirements tied to individual positions and call types. Enforced during position creation, offer workflow, and job publishing.</p>
+      <div class="flow-grid">
+        <div class="flow">
+          <h3>Specialties Per Skill <span class="status done">LIVE</span></h3>
+          <ul>
+            <li>Each skill can have sub-specialties (e.g., Audio → FOH, Monitor, Recording).</li>
+            <li>Admin defines specialties per skill in the Skills taxonomy; stored in DynamoDB.</li>
+            <li>Job creator can require specific specialties for a position (e.g., "Wardrobe Assistant with formal-wear specialty").</li>
+            <li>Crew search and offer filtering respect specialty requirements.</li>
+          </ul>
+        </div>
+        <div class="flow">
+          <h3>Minimum Hours Per Skill <span class="status done">LIVE</span></h3>
+          <ul>
+            <li>Admin sets minimum hours (0–10, step 0.25) per discipline (e.g., "Lighting Director: 200 hours minimum").</li>
+            <li>When company sends an offer, minimum hours displayed to crew so they know qualification bar.</li>
+            <li>When company adds a call for crew profile with fewer than minimum hours: warning banner shown with reason.</li>
+            <li>Prevents accidental under-qualified hires while allowing override if intentional.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>9) AI Call Generation Improvements - Skill-Aware Scheduling</h2>
+      <p class="sub">AI schedule generator now uses live skill taxonomy, specialties, and call type restrictions for smarter call assignments.</p>
+      <div class="flow-grid">
+        <div class="flow">
+          <h3>AI Integration Points <span class="status done">LIVE</span></h3>
+          <ul>
+            <li><strong>Discipline selection:</strong> AI uses only allowed specialties for the role (no invalid combos).</li>
+            <li><strong>Call type generation:</strong> AI respects allowed call types per skill (e.g., "Shop Call" only for Wardrobe/Costumes).</li>
+            <li><strong>Scheduling hints:</strong> AI reads optional scheduling hints (e.g., "Cue-to-cue + focus during rehearsal") to flavor call distribution.</li>
+            <li><strong>Duration & overnight:</strong> AI generates realistic multi-day call patterns with correct day boundaries.</li>
+          </ul>
+        </div>
+        <div class="flow">
+          <h3>Quality Outcomes <span class="status done">LIVE</span></h3>
+          <ul>
+            <li>Generated schedules now 100% compliant with admin-defined skill/call-type rules (no post-import fixing needed).</li>
+            <li>Companies no longer see validation warnings on bulk import of AI-generated calls.</li>
+            <li>Crew receives calls they are actually qualified for and can actually perform.</li>
+            <li>Scheduling is more nuanced: recognizes day-call vs night-call vs rehearsal vs show phases.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>10) Open Questions & Blockers</h2>
+      <p class="sub">Known items pending clarification or external dependencies.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Status</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>W2 Integration for US Crew Onboarding</td>
+            <td><span class="status inprogress">IN PROGRESS</span></td>
+            <td>Needed to onboard US-based crew members; likely required for Q3 launch in North America.</td>
+          </tr>
+          <tr>
+            <td>Minimum Call Sheet PDF Generation</td>
+            <td><span class="status inprogress">IN PROGRESS</span></td>
+            <td>Crew expect a printable call sheet 24-48h before show; required for production readiness.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        Both items block full production readiness. W2 integration affects crew eligibility; minimum call sheet is a crew UX expectation. Current workaround: manual PDF exports or email summaries.
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
