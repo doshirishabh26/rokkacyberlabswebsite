@@ -1,531 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show Crew Network - Demo 6th May 2026</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Show Crew Network demo 13th May 2026</title>
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #f4f6fb;
       --card: #ffffff;
-      --text: #172033;
-      --muted: #5f6b85;
+      --text: #14213d;
+      --muted: #52607a;
       --brand: #0f4aa3;
-      --brand-2: #1e7ef2;
-      --ok: #0f9d76;
-      --warn: #d17a00;
-      --line: #e3e8f1;
-      --shadow: 0 8px 24px rgba(16, 37, 72, 0.08);
+      --line: #dbe4f2;
+      --shadow: 0 10px 26px rgba(17, 35, 74, 0.09);
       --radius: 14px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.55;
     }
 
     .hero {
-      background: linear-gradient(120deg, #0d2147 0%, #0f4aa3 45%, #1e7ef2 100%);
+      background: linear-gradient(120deg, #0d2147 0%, #0f4aa3 55%, #1e7ef2 100%);
       color: #fff;
-      padding: 56px 24px 50px;
       text-align: center;
+      padding: 52px 24px 44px;
     }
-    .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
-    .hero p { margin-top: 10px; opacity: 0.93; max-width: 860px; margin-left: auto; margin-right: auto; }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      opacity: 0.95;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .meta {
       margin-top: 16px;
       display: inline-block;
       padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 999px;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.14);
       font-size: 0.88rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 24px; }
-    section { margin-top: 22px; }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px;
+    }
 
     .card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 24px;
+      padding: 22px;
+      margin-top: 18px;
     }
 
-    h2 { font-size: 1.35rem; margin-bottom: 8px; color: #10224a; }
-    .sub { color: var(--muted); margin-bottom: 18px; }
-
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+    h2 {
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+      color: #10254f;
     }
-    .kpi {
+
+    h3 {
+      font-size: 1.06rem;
+      margin-bottom: 8px;
+      color: #16356e;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    ol {
+      padding-left: 22px;
+    }
+
+    ul {
+      padding-left: 22px;
+      margin-top: 8px;
+      color: #23375d;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .group {
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
       background: #fbfcff;
     }
-    .kpi .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    .kpi .value { font-size: 1.1rem; font-weight: 700; margin-top: 6px; }
 
-    .flow-grid {
+    .highlight {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-left: 4px solid var(--brand);
+      background: #eef4ff;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.92rem;
+      color: #1e3566;
+      font-weight: 600;
+    }
+
+    .questions li {
+      font-weight: 600;
+      color: #1b2e52;
+    }
+
+    .shots {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 14px;
+      margin-top: 10px;
     }
-    .flow {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      background: #fff;
-    }
-    .flow h3 { font-size: 1.03rem; margin-bottom: 8px; }
-    .flow ul { padding-left: 20px; color: #2a3550; }
-    .flow li { margin-bottom: 6px; }
 
-    .status {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      vertical-align: middle;
-    }
-    .done { background: #e7f8f2; color: var(--ok); }
-    .inprogress { background: #fff5e8; color: var(--warn); }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      font-size: 0.93rem;
-    }
-    thead { background: #132b57; color: #fff; }
-    th, td { text-align: left; padding: 12px 12px; border-bottom: 1px solid var(--line); }
-    tbody tr:last-child td { border-bottom: none; }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 14px;
-    }
-    .gallery-title {
-      margin: 18px 0 10px;
-      font-size: 1rem;
-      color: #123065;
-      font-weight: 700;
-    }
     .shot {
-      border: 1px dashed #b3c0d9;
+      border: 1px solid var(--line);
       border-radius: 12px;
-      background: #f9fbff;
       overflow: hidden;
+      background: #fbfcff;
     }
+
     .shot img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
       display: block;
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
       border-bottom: 1px solid var(--line);
     }
-    .shot .ph {
-      height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #7b8aa8;
-      font-size: 0.86rem;
-      text-align: center;
-      padding: 12px;
-    }
-    .shot .cap {
-      border-top: 1px solid var(--line);
-      padding: 10px 12px;
-      font-size: 0.84rem;
-      color: #384760;
-      background: #fff;
-      min-height: 62px;
-    }
 
-    .note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--brand-2);
-      background: #eef5ff;
-      border-radius: 0 10px 10px 0;
-      color: #23365b;
+    .shot .cap {
+      padding: 10px 12px;
       font-size: 0.9rem;
+      color: #2a3b5f;
+      font-weight: 600;
     }
 
     .footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.82rem;
-      padding: 26px 16px 36px;
+      padding: 24px 12px 34px;
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.7rem; }
-      .wrap { padding: 14px; }
-      .card { padding: 16px; }
+      .hero h1 {
+        font-size: 1.65rem;
+      }
+
+      .wrap {
+        padding: 14px;
+      }
+
+      .card {
+        padding: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="hero">
-    <h1>Show Crew Network - Demo 6th May 2026</h1>
-    <p>Reviews, Bulk Call Editor, Admin Skills Management, Call Specialties, Minimum Hours enforcement, and AI scheduling improvements.</p>
-    <div class="meta">Show Crew Network &mdash; May 6, 2026</div>
+    <h1>Show Crew Network demo 13th May 2026</h1>
+    <p>Feature summary for demo presentation</p>
+    <div class="meta">May 13, 2026</div>
   </header>
 
   <main class="wrap">
     <section class="card">
-      <h2>1) What We Shipped</h2>
-      <p class="sub">Platform updates shipped across reviews, scheduling, skills taxonomy, AI generation, and admin tooling.</p>
-      <div class="kpi-grid">
-        <div class="kpi">
-          <div class="label">Accepted Offer Tracking</div>
-          <div class="value">acceptedAt now persisted</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Skills Management</div>
-          <div class="value">scheduling hints + specialties</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Job Creation</div>
-          <div class="value">DB-backed skills only (no hardcoded source)</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Reviews</div>
-          <div class="value">company review flow + crew response flow</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Bulk Call Editor</div>
-          <div class="value">mass schedule updates + CSV import/export</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Admin Skills</div>
-          <div class="value">taxonomy, min hours, call type restrictions</div>
-        </div>
+      <h2>Delivered Features</h2>
+      <p class="sub">Feature summary for presentation with tour screenshots attached.</p>
+
+      <div class="group">
+        <h3>1. Tour Jobs support and payout added</h3>
+        <ul>
+          <li>Tour payments are charged through ACH flow.</li>
+          <li>Crew is paid out weekly.</li>
+          <li>Single attendance tab for the full tour.</li>
+          <li>AI call position support added for tour jobs.</li>
+          <li>Invoice support added for tours.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h3>2. Invoice support extended</h3>
+        <ul>
+          <li>Invoices are now paid from regular ACH cron flows.</li>
+          <li>After invoice approval and funds arrival, payout to crew is processed after 7 days.</li>
+          <li>Invoice tab was upgraded and clearly segregated from commitments/batches payment views.</li>
+          <li>Crew can now see invoice status directly (for example: Funds Held, payout eligibility timeline).</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h3>3. UI enhancements for the Job Stepper</h3>
+        <ul>
+          <li>Added a job timeline stepper to show lifecycle progress clearly: Draft → Published → Crew Hired → Funded → In Progress → Completed.</li>
+          <li>Current stage is visually highlighted so teams know exactly where the job is in the operational pipeline.</li>
+          <li>Stepper appears directly on job detail for faster status awareness during live operations.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h3>4. Added company-level minimum hours override field</h3>
+        <ul>
+          <li>New Company Profile → Pay Policies page enables skill-level minimum-hours override.</li>
+          <li>Company can search for a specific skill and set custom minimum billable hours.</li>
+          <li>Overrides are applied per company without changing platform defaults globally.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h3>5. Added Duplicate Job for company ease-of-use</h3>
+        <ul>
+          <li>Company can duplicate an existing job directly from the job action menu.</li>
+          <li>Duplicate flow creates a new draft with copied structure for faster setup.</li>
+          <li>Wizard opens prefilled so teams can quickly adjust dates/details and publish.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h3>6. Crew rate tab now supports hourly and daily rate</h3>
+        <ul>
+          <li>Crew Profile → Skills & Rates tab now supports both hourly and daily rate selection.</li>
+          <li>Rate type is visible per skill, giving companies clearer rate expectations during matching.</li>
+        </ul>
+        <div class="highlight">Only daily hours are currently used for the calculation.</div>
       </div>
     </section>
 
     <section class="card">
-      <h2>2) Review-Related UX Improvements</h2>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>Company Reviews Tab</h3>
-          <ul>
-            <li>Unreviewed crew alert banner with action CTA.</li>
-            <li>Per-crew review cards and edit action.</li>
-            <li>Average rating given and count summary cards.</li>
-            <li>Category breakdown bars inside review cards.</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>Data Integrity Controls</h3>
-          <ul>
-            <li>No self-review.</li>
-            <li>No duplicate per reviewer/reviewee/job.</li>
-            <li>Strict category and score validation.</li>
-            <li>30-day edit window; lock after response.</li>
-          </ul>
-        </div>
+      <h2>Tour Demo Evidence (Screenshots)</h2>
+      <p class="sub">Captured from company and crew portals for the current tour flow and payout lifecycle.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="photos/AIPositionTour.png" alt="Tour position creation step with AI Suggest Positions" />
+          <figcaption class="cap">AI-supported Tour Position setup</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/AttendanceTabTour.png" alt="Tour Time and Attendance tab with engagement dates" />
+          <figcaption class="cap">Single attendance tab for full tour engagement</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/NoShowMarkTour.png" alt="Tour no-show confirmation dialog" />
+          <figcaption class="cap">Tour no-show handling with payout impact messaging</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/CompanyPortalTourPaymentPageCommited.png" alt="Company portal tour payments tab showing committed amounts and next batch ETA" />
+          <figcaption class="cap">Company portal: committed tour payments and ACH batch ETA</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/CrewPortal-TourPaymentCommited.png" alt="Crew portal payouts page showing committed and escrow amounts" />
+          <figcaption class="cap">Crew portal: committed, escrow reserved, and payout tracking</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="card">
-      <h2>3) Bulk Call Editor - Mass Schedule Updates</h2>
-      <p class="sub">Company operators can bulk-edit call times, types, or import/export via spreadsheet for rapid schedule updates.</p>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>Bulk Editor Capabilities <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Select multiple calls via checkboxes; apply call type / start time / end time to all at once.</li>
-            <li>Export call schedule to CSV with timezone and valid call types as headers.</li>
-            <li>Paste from spreadsheet: automatic format detection, timezone validation, overnight-boundary detection.</li>
-            <li>Live preview of changes before commit: shows per-call before/after side-by-side.</li>
-            <li>Validation warnings for skill/call-type mismatches (e.g., "Shop Call not allowed for Production Assistant").</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>Data Integrity & Safety <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>No changes applied until user confirms in preview modal.</li>
-            <li>Duration calculated correctly across date boundaries (e.g., 22:00 to 02:00 = next day, 4h).</li>
-            <li>All pasted/imported values validated against allowed call types per skill/position.</li>
-            <li>Timezone hint enforced: all times must be in job's configured timezone (e.g., America/Chicago).</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">A. Bulk Call Editor Table View</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Bulk-Edit-Jobs.png" alt="Bulk call editor main table">
-          <div class="cap">Bulk editor showing 64 calls across 10 positions with checkboxes, call type chips, and "Set for all selected" action bar.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">B. Inline Bulk Edits (Call Type, Time)</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Bulk-Edit-Options.png" alt="Call type dropdown in bulk editor">
-          <div class="cap">Call type picker showing all 9 valid types: Day, Show, Load In, Strike, Rehearsal, Changeover, Sound Check, Shop Call, Onsite Call.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">C. CSV Import & Paste Workflow</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Bulk-Edit-Paste-Options.png" alt="Spreadsheet import modal">
-          <div class="cap">Import modal showing CSV format guidance, timezone notice, valid call types, and data preview.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Bulk-Edit-Pasted-Changed.png" alt="Preview of imported changes">
-          <div class="cap">Pre-commit preview: side-by-side before/after for all changed fields across selected calls.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">D. Validation & Error Handling</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Validations-Call.png" alt="Import validation warnings">
-          <div class="cap">Validation alert: "Shop Call is not allowed for Production Assistant" — field skipped, other fields applied, preview shown.</div>
-        </div>
+      <h2>Invoice Tab Upgrade & Segregation (Screenshots)</h2>
+      <p class="sub">Company-side invoice experience refresh and crew-side status visibility proof points.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="photos/InvoiceTabUpgradation.png" alt="Company portal upgraded invoice tab with supplementary invoice list" />
+          <figcaption class="cap">Company portal: upgraded Invoice tab UI</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/InvoicesPaymwntIntegratedwithPaymentsTab.png" alt="Company job view showing invoice and payments tab segregation" />
+          <figcaption class="cap">Invoice and Payments tab segregation in company job workflow</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/InvoiceFundsHeld.png" alt="Crew portal invoice view showing Funds Held status and payout eligibility" />
+          <figcaption class="cap">Crew portal: invoice status visibility (Funds Held + payout date)</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="card">
-      <h2>4) Admin Skills Management - Taxonomy & Call Type Restrictions</h2>
-      <p class="sub">Internal admin portal for managing the skill taxonomy, minimum hours, specialties, and allowed call types per discipline.</p>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>Skills Admin Features <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Search skills across name, category, and aliases with 350ms debounce.</li>
-            <li>Add/edit skill: name, category, aliases, minimum hours (0-10, step 0.25), enabled toggle.</li>
-            <li>Assign allowed call types per skill (e.g., "Shop Call" restricted to certain disciplines).</li>
-            <li>Bulk delete selected skills with confirmation.</li>
-            <li>Real-time sync to DynamoDB; all changes live to crew/company job creation flows.</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>System Impact <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Crew position creation: discipline picker populated from skills table (no hardcoded fallback).</li>
-            <li>Call type validation: bulk editor and manual entry prevent invalid skill/call-type combos.</li>
-            <li>AI schedule generation: uses live allowed call types to avoid generating invalid calls.</li>
-            <li>Job search filters: crew discipline selections match admin-defined skills exactly.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">A. Skills Table & Management</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Admin-SkillEdit-Tab.png" alt="Admin skills management table">
-          <div class="cap">Admin skills table: 142 positions across 16 categories. Each row shows name, category, min hours (toggle), and allowed call types chips. Search, add skill, bulk delete available.</div>
-        </div>
+      <h2>Rates & Pay Policies Upgrade (Screenshots)</h2>
+      <p class="sub">Proof points for crew daily/hourly rate entry and company-side minimum-hours override controls.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="photos/crew-dailyandhourlyrates.png" alt="Crew profile skills and rates tab showing hourly and daily rate toggle" />
+          <figcaption class="cap">Crew portal: Skills & Rates supports hourly and daily rates</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/PayPoliceisTabSkillOverride.png" alt="Company profile pay policies page showing skill-level minimum-hours override list" />
+          <figcaption class="cap">Company portal: Pay Policies tab with skill-level override controls</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/StageHandMinimumOverride.png" alt="Company pay policies search showing stagehand minimum-hours override applied" />
+          <figcaption class="cap">Company override example: Stagehand minimum hours set to 5 hrs</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="card">
-      <h2>5) Review Lifecycle Screens</h2>
-      <p class="sub">Screenshots arranged in product flow order: company submits review, crew sees and responds, notification loop closes.</p>
-
-      <h3 class="gallery-title">A. Company Initiates and Submits Review</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Review-Top-Page.png" alt="Company review tab with pending review alert">
-          <div class="cap">Company job Reviews tab showing pending reviewer alert and direct CTA to start review.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Company-Review-Job-Dashbvoard.png" alt="Company reviews dashboard for job">
-          <div class="cap">Company review dashboard with aggregate metrics and existing review cards for the job.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Review-Selection.png" alt="Company selects ratings in review modal">
-          <div class="cap">Review modal opened: company enters overall score, category ratings, and comment.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Review-Filled-Company.png" alt="Completed company review form ready to submit">
-          <div class="cap">Completed company review ready for submission with structured category feedback.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">B. Published Review Visibility (Both Sides)</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Crew-View-Review.png" alt="Crew sees company review in crew portal">
-          <div class="cap">Crew portal view: company-authored review appears with full category breakdown and response action.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Crew-Card-Review.png" alt="Crew public card with rating and jobs">
-          <div class="cap">Crew search card/profile context reflecting rating credibility and completed jobs metadata.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">C. Crew Response Loop</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Crew-Response.png" alt="Crew responds to company review">
-          <div class="cap">Crew submits one response against the company-authored review inside the same job context.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Crew-Response-View.png" alt="Crew response shown under review">
-          <div class="cap">Crew-side confirmation view showing response attached to the original review thread.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Company-View-Review-Response.png" alt="Company sees crew response on review card">
-          <div class="cap">Company-side review card now includes the crew response for closed-loop feedback visibility.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">D. Notification System Touchpoints</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Crew-Email-Review.png" alt="Email sent to crew when review is posted">
-          <div class="cap">Email notification to crew when a new company review is posted.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Company-Email-Review-Respond.png" alt="Email sent to company when crew responds">
-          <div class="cap">Email notification to company when crew submits a response to their review.</div>
-        </div>
+      <h2>Duplicate Job Option (Screenshots)</h2>
+      <p class="sub">End-to-end flow from action menu to duplicate creation and prefilled draft wizard.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="photos/DuplicateJobOption.png" alt="Job action menu showing Duplicate Job option" />
+          <figcaption class="cap">Action menu includes Duplicate Job option</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/DuplicateJobCreationOptions.png" alt="Duplicate job confirmation dialog with options" />
+          <figcaption class="cap">Duplicate creation modal with copy options</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/DuplicateJobCreated.png" alt="New duplicated job draft created in wizard" />
+          <figcaption class="cap">New draft created from duplicate and opened in wizard</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/DuplicateJobBanner.png" alt="Duplicate job flow status shown in job stepper context" />
+          <figcaption class="cap">Duplicated job shown in standard stepper-driven workflow</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="card">
-      <h2>6) Call Specialties & Minimum Hours - Skill-Based Constraints</h2>
-      <p class="sub">Fine-grained skill requirements tied to individual positions and call types. Enforced during position creation, offer workflow, and job publishing.</p>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>Specialties Per Skill <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Each skill can have sub-specialties (e.g., Audio → FOH, Monitor, Recording).</li>
-            <li>Admin defines specialties per skill in the Skills taxonomy; stored in DynamoDB.</li>
-            <li>Job creator can require specific specialties for a position (e.g., "Wardrobe Assistant with formal-wear specialty").</li>
-            <li>Crew search and offer filtering respect specialty requirements.</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>Minimum Hours Per Skill <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Admin sets minimum hours (0–10, step 0.25) per discipline.</li>
-            <li>When company sends an offer, minimum hours displayed to crew so they know qualification bar.</li>
-            <li>When company adds a call for crew with fewer than minimum hours: warning banner shown inline on the position.</li>
-            <li>Example: Stagehand position shows "5 under 4hr min" badge — prevents accidental under-qualified hires.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">A. Call Type Filtering Per Position (Visual Scheduler)</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Call-Selection-1.png" alt="Visual scheduler showing call types per position">
-          <div class="cap">Visual scheduler: each position gets only its allowed call types. Color-coded blocks show Load In, Rehearsal, Onsite Call, Show, Strike etc. correctly assigned per role.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">B. Shop Call — Wardrobe-Only Example</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Call-Selection-Shop-Call.png" alt="Shop Call restricted to Wardrobe Assistant">
-          <div class="cap">Shop Call only appears for Wardrobe Assistant — not Production Assistant, Ground Rigger, etc. Admin-defined call type restriction enforced live in the scheduler.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">C. Minimum Hours Warning on Position</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/StageHand-Call-Warning.png" alt="Stagehand minimum hours warning badge">
-          <div class="cap">Stagehand position showing "5 under 4hr min" warning badge inline — visible to company as they build the schedule before publishing.</div>
-        </div>
-      </div>
-
-      <h3 class="gallery-title">D. Admin: Adding & Editing Skills with Specialties + Call Types</h3>
-      <div class="photo-grid">
-        <div class="shot">
-          <img src="photos/Admin-Add-SKill.png" alt="Add Skill dialog with specialties, scheduling hint, and call types">
-          <div class="cap">Add Skill dialog: name, category, aliases, specialties (comma-separated), scheduling hint for AI, min hours toggle, and allowed call type chip-selector.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Admin-Edit-Skill.png" alt="Edit Skill dialog showing Forklift Op with specialties and all call types selected">
-          <div class="cap">Edit Skill for Forklift Op: specialties "Truck Loading, Dock Ops, Pallet Handling, Outdoor Yard Moves" and scheduling hint for AI. All 9 call types selected = unrestricted.</div>
-        </div>
-        <div class="shot">
-          <img src="photos/Admin-Add-MinimumHours.png" alt="Minimum hours toggle enabled with hours input">
-          <div class="cap">Minimum hours enabled on a skill: toggle on, hours field active. Allowed Call Types below restrict which call types can be scheduled for this discipline.</div>
-        </div>
+      <h2>Job Timeline Stepper (Screenshot)</h2>
+      <p class="sub">Timeline stepper added on job detail to make progression and funding stage immediately visible.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="photos/StepperJobTimeline.png" alt="Job detail timeline stepper showing Draft, Published, Crew Hired, Funded, In Progress, and Completed stages" />
+          <figcaption class="cap">Job timeline stepper with clear progression stages</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="card">
-      <h2>7) AI Call Generation Improvements - Skill-Aware Scheduling</h2>
-      <p class="sub">AI schedule generator now uses live skill taxonomy, specialties, and call type restrictions for smarter call assignments.</p>
-      <div class="flow-grid">
-        <div class="flow">
-          <h3>AI Integration Points <span class="status done">LIVE</span></h3>
-          <ul>
-            <li><strong>Discipline selection:</strong> AI uses only allowed specialties for the role (no invalid combos).</li>
-            <li><strong>Call type generation:</strong> AI respects allowed call types per skill (e.g., "Shop Call" only for Wardrobe/Costumes).</li>
-            <li><strong>Scheduling hints:</strong> AI reads optional scheduling hints (e.g., "Cue-to-cue + focus during rehearsal") to flavor call distribution.</li>
-            <li><strong>Duration & overnight:</strong> AI generates realistic multi-day call patterns with correct day boundaries.</li>
-          </ul>
-        </div>
-        <div class="flow">
-          <h3>Quality Outcomes <span class="status done">LIVE</span></h3>
-          <ul>
-            <li>Generated schedules now 100% compliant with admin-defined skill/call-type rules (no post-import fixing needed).</li>
-            <li>Companies no longer see validation warnings on bulk import of AI-generated calls.</li>
-            <li>Crew receives calls they are actually qualified for and can actually perform.</li>
-            <li>Scheduling is more nuanced: recognizes day-call vs night-call vs rehearsal vs show phases.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>8) Open Questions & Blockers</h2>
-      <p class="sub">Known items pending clarification or external dependencies.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Status</th>
-            <th>Impact</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>W2 Integration for US Crew Onboarding</td>
-            <td><span class="status inprogress">IN PROGRESS</span></td>
-            <td>Needed to onboard US-based crew members; likely required for Q3 launch in North America.</td>
-          </tr>
-          <tr>
-            <td>Minimum Call Sheet PDF Generation</td>
-            <td><span class="status inprogress">IN PROGRESS</span></td>
-            <td>Crew expect a printable call sheet 24-48h before show; required for production readiness.</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="note">
-        Both items block full production readiness. W2 integration affects crew eligibility; minimum call sheet is a crew UX expectation. Current workaround: manual PDF exports or email summaries.
-      </div>
+      <h2>Open Questions</h2>
+      <ol class="questions">
+        <li>Does tour need a call schedule?</li>
+        <li>Does tour need to have a call sheet?</li>
+        <li>Does tour need to have an attendance sheet?</li>
+        <li>Is overtime needed to be calculated in the tour?</li>
+        <li>How do we want tour payment to happen? Currently it uses the same batch trigger as event jobs, and payouts are weekly.</li>
+        <li>Does it make sense for crew to expect a minimum daily payment irrespective of minimum hours if they set a daily rate?</li>
+      </ol>
     </section>
   </main>
 
   <footer class="footer">
-    Show Crew Network &mdash; Demo 6th May 2026
+    Show Crew Network demo page
   </footer>
 </body>
 </html>
