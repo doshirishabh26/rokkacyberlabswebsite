@@ -135,7 +135,6 @@
   <div class="stat-grid">
     <div class="stat-card"><div class="num">5</div><div class="label">Major Features</div></div>
     <div class="stat-card"><div class="num">3</div><div class="label">New Systems</div></div>
-    <div class="stat-card"><div class="num">48+</div><div class="label">Commits Shipped</div></div>
     <div class="stat-card"><div class="num">2</div><div class="label">Apps Updated</div></div>
     <div class="stat-card"><div class="num">0</div><div class="label">Build Errors</div></div>
   </div>
@@ -144,22 +143,89 @@
   <div class="section-label">Tour Payment System</div>
   <div class="feature-grid">
 
-    <!-- mechanism explainer -->
-    <div class="feature-card full">
+    <!-- mechanism explainer — stepper -->
+    <div class="feature-card full" style="padding:28px 28px 24px;">
       <span class="tag new">✦ New System</span>
-      <h3>How Tour Billing Works — Rolling Weekly ACH Instalments</h3>
-      <p>Tour jobs use a completely different billing model than events. Instead of one upfront charge, the platform creates a <strong>separate weekly commitment per crew member per work week</strong>, anchored to each person's individual start date on the tour.</p>
-      <ul>
-        <li><strong>Anchor day</strong> = max(tour start date, position start date, crew hire date). Each crew member's weekly billing clock starts from their anchor.</li>
-        <li><strong>Week 1 commitment</strong> — created the moment a crew member accepts an offer. ACH-pulled when within 7 days of the funding due date; charged to card immediately if the crew is hired inside that window.</li>
-        <li><strong>Week 2</strong> — auto-created on the day the tour starts. Same ACH / card-escalation rules apply.</li>
-        <li><strong>Week 3, 4, 5…</strong> — created automatically by a daily cron only on the crew member's anchor-day anniversary (every 7 days from tour start), preventing premature commitment creation.</li>
-        <li><strong>Funding due date</strong> = anchor + (week − 1) × 7 days — the start of that work week. ACH batch fires on or before this date.</li>
-        <li><strong>Crew payout eligible</strong> = anchor + week × 7 + 7 days — 7 days after the work week ends, paid out independently, no need to wait for job completion.</li>
-        <li>Mid-tour hires start their own weekly clock. A crew member who joins week 3 of a tour gets Week 1 committed at hire, not "Week 3" of the tour.</li>
-        <li>If no card is on file when a hire happens inside the T-7 window, the hire is automatically rolled back and the company is notified.</li>
-        <li><strong>T&amp;A has no effect on tour commitment amounts.</strong> Weekly pay is a flat contract — OT and attendance discrepancies do not change the weekly charge.</li>
-      </ul>
+      <h3 style="margin-bottom:6px;">How Tour Billing Works — Rolling Weekly ACH Instalments</h3>
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:28px;line-height:1.6;">Unlike a single-event charge, tour billing creates one weekly commitment per crew member per work week — each anchored to that person's individual start date.</p>
+
+      <!-- stepper -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <!-- Step 1 -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+            <div style="width:2px;flex:1;background:var(--line);margin:4px 0;min-height:28px;"></div>
+          </div>
+          <div style="padding:0 0 28px 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:var(--text);">Offer Accepted → Anchor Set &amp; Week 1 Committed</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0;line-height:1.6;">The moment crew accepts, the system locks in their <strong style="color:var(--text);">anchor day</strong> = <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:0.8rem;">max(tour start, position start, hire date)</code> and creates a Week 1 commitment. If the hire is inside the 7-day window, the card is charged immediately. Otherwise it queues for the next ACH batch.</p>
+            <div style="margin-top:8px;background:#fff8e1;border:1px solid #fde68a;border-radius:7px;padding:7px 12px;font-size:0.78rem;color:#92400e;line-height:1.5;">⚠ No card on file at hire inside T-7? The hire is <strong>automatically rolled back</strong> and the company is notified.</div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+            <div style="width:2px;flex:1;background:var(--line);margin:4px 0;min-height:28px;"></div>
+          </div>
+          <div style="padding:0 0 28px 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:var(--text);">Tour Starts → Week 2 Auto-Created</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0;line-height:1.6;">On the calendar day the tour begins, the platform automatically creates a Week 2 commitment for every hired crew member. Same ACH / card-escalation logic applies — no PM action required.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+            <div style="width:2px;flex:1;background:var(--line);margin:4px 0;min-height:28px;"></div>
+          </div>
+          <div style="padding:0 0 28px 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:var(--text);">Every 7 Days from Anchor → Next Week Created by Cron</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0;line-height:1.6;">Weeks 3, 4, 5… are created by a daily cron <em>only</em> on each crew member's anchor-day anniversary — not all at once upfront. This prevents premature commitment creation for long tours. Mid-tour hires start at <strong style="color:var(--text);">their own Week 1</strong>, not the tour's current week number.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+            <div style="width:2px;flex:1;background:var(--line);margin:4px 0;min-height:28px;"></div>
+          </div>
+          <div style="padding:0 0 28px 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:var(--text);">Funding Due Date → ACH Batch Fires</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0;line-height:1.6;">Funding due = <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:0.8rem;">anchor + (week − 1) × 7 days</code> — the start of that work week. When this date is within 7 days, the ACH batch fires. ACH typically settles in 2–4 business days.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#22c55e;color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+            <div style="width:2px;flex:1;background:var(--line);margin:4px 0;min-height:28px;"></div>
+          </div>
+          <div style="padding:0 0 28px 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:var(--text);">Work Week Ends → 7-Day Hold</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0;line-height:1.6;">Once the work week completes, a 7-day hold begins before the payout transfer fires. This window allows for any disputes or corrections before money leaves Stripe.</p>
+          </div>
+        </div>
+
+        <!-- Step 6 — terminal -->
+        <div style="display:flex;gap:0;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#22c55e;color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✓</div>
+          </div>
+          <div style="padding:0 0 0 18px;flex:1;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:#15803d;">Crew Paid — No Wait for Job Completion</div>
+            <p style="font-size:0.83rem;color:var(--muted);margin:0 0 8px;line-height:1.6;">Payout eligible = <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:0.8rem;">anchor + week × 7 + 7 days</code>. Each week pays out independently — crew don't wait until the tour wraps to see money.</p>
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:7px 12px;font-size:0.78rem;color:#15803d;line-height:1.5;">✦ <strong>T&amp;A has no effect on tour commitment amounts.</strong> Weekly pay is a flat contract — OT overruns and attendance discrepancies do not change the charge or payout for that week.</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- live payments tab example -->
