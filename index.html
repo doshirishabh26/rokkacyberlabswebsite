@@ -626,440 +626,138 @@
   </div>
 
   <!-- SCAN LOG WALKTHROUGH -->
-  <div class="section-label">Live Example — Scan Log &amp; Violation Breakdown</div>
-  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:18px;line-height:1.6;">
-    Here is a real scan log from a 14-hour overnight shift. Walk through each event, see exactly why the timer stays running through a <em>Provided Meal</em>, and understand how the two meal violations are calculated.
+  <div class="section-label">Live Example — Time &amp; Attendance in Action</div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:24px;line-height:1.6;">
+    Screenshots from a real overnight shift — Mon May 18 → Tue May 19, 2026. Jenny Rosen (Stagehand) and Rishabh Doshi (Lighting Director) both hired on the same job.
   </p>
 
-  <div class="scan-demo-wrap">
-    <!-- header -->
-    <div class="scan-demo-header">
-      <div>
-        <div class="crew-name">Jenny Rosen</div>
-        <div class="crew-role">Stagehand · Mon May 18, 2026 → Tue May 19, 2026 &nbsp;·&nbsp; Local commute (8h short turn)</div>
-      </div>
-      <div class="scan-kpis">
-        <div class="scan-kpi"><div class="kval">13h 30m</div><div class="klabel">Billable</div></div>
-        <div class="scan-kpi"><div class="kval ot">3h 30m OT</div><div class="klabel">Overtime (1.5×)</div></div>
-        <div class="scan-kpi"><div class="kval">30m</div><div class="klabel">Breaks</div></div>
-        <div class="scan-kpi"><div class="kval viol">2 violations</div><div class="klabel">Meal issues</div></div>
-      </div>
+  <!-- Screenshot 1: main T&A dashboard -->
+  <div style="margin-bottom:32px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">T&amp;A Dashboard — Day view with live crew status &amp; compliance</div>
+    <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
+      <img src="photos/TimeInvoicesNewPage.png" alt="Time & Attendance dashboard" style="width:100%;display:block;">
     </div>
+    <div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#15803d;line-height:1.5;"><strong>ON SITE 0/2</strong> — both crew have checked out (Done — left 6:30 AM)</div>
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#c2410c;line-height:1.5;"><strong>26h 15m total · 6h 15m OT</strong> — combined hours across both crew members</div>
+      <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#b91c1c;line-height:1.5;"><strong>5 compliance issues</strong> — meal break violations flagged automatically</div>
+      <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#92400e;line-height:1.5;"><strong>Double-time warning</strong> — Jenny Rosen at 13h 30m, approaching 14h DT threshold</div>
+    </div>
+  </div>
 
-    <!-- timeline -->
-    <div class="scan-timeline">
-
-      <!-- 1 Site in -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot site-in">🟢</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Site in
-            <span class="scan-time">May 18 · 4:30 PM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong>Clock starts.</strong> Jenny arrives on site and is logged in.
-            The billable timer begins at 4:30 PM. Work block 1 begins.
-            All time from this point forward counts toward her daily total unless a
-            <em>Break out</em> is logged.
-          </div>
-        </div>
+  <!-- Screenshot 2: scan log panel -->
+  <div style="margin-bottom:32px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">Scan Log Detail Panel — Jenny Rosen's overnight shift</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
+        <img src="photos/ScanLogForPage.png" alt="Jenny Rosen scan log" style="width:100%;display:block;">
       </div>
-
-      <!-- 2 Break out -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot break-out">⏸️</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Break out
-            <span class="scan-time">May 18 · 6:45 PM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong class="running">Timer paused.</strong>
-            Work block 1 ends: <strong>4:30 PM → 6:45 PM = 2h 15m billable.</strong>
-            Jenny steps away from the worksite. This is a proper walk-away break —
-            the clock stops.
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:0.82rem;margin-bottom:8px;">8 scans over 14 hours</div>
+          <div style="display:flex;flex-direction:column;gap:5px;font-size:0.78rem;color:var(--muted);">
+            <div>→ <strong style="color:#16a34a;">Site in</strong> · May 18, 4:30 PM</div>
+            <div>⏸ <strong style="color:#d97706;">Break out</strong> · May 18, 6:45 PM</div>
+            <div>▶ <strong style="color:#16a34a;">Break in</strong> · May 18, 7:00 PM</div>
+            <div>☕ <strong style="color:#9333ea;">Provided meal</strong> · May 18, 9:30 PM <span style="color:#9333ea;font-style:italic;">clock keeps running</span></div>
+            <div>⏸ <strong style="color:#d97706;">Break out</strong> · May 19, 12:45 AM</div>
+            <div>▶ <strong style="color:#16a34a;">Break in</strong> · May 19, 1:00 AM</div>
+            <div>☕ <strong style="color:#9333ea;">Provided meal</strong> · May 19, 3:30 AM</div>
+            <div>← <strong style="color:#6b7280;">Site out</strong> · May 19, 6:30 AM</div>
           </div>
         </div>
-      </div>
-
-      <!-- 3 Break in -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot break-in">▶️</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Break in
-            <span class="scan-time">May 18 · 7:00 PM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong class="running">Timer resumes.</strong>
-            Break duration: <strong>15 minutes</strong> (6:45 → 7:00 PM). Break time does not count as billable.
-            Work block 2 begins at 7:00 PM. Running total billable so far: <strong>2h 15m.</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 Provided meal #1 -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot meal">☕</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Provided meal
-            <span class="scan-time">May 18 · 9:30 PM</span>
-            <span class="scan-tag manual">Manual</span>
-            <span class="scan-tag no-stop">⚠ Timer does NOT stop</span>
-          </div>
-          <div class="scan-explain">
-            <strong>The company brought catering to the worksite.</strong>
-            Jenny ate on-site while the production continued. A <em>Provided Meal</em> event records that the company fulfilled their catering obligation —
-            <strong class="danger">but it is not a proper walk-away break.</strong>
-            The billable clock keeps running. No "Break out" was logged, so legally
-            the meal does not count as a rest period under labor rules.
-            <br><br>
-            At this point Jenny is 2h 30m into work block 2 (7:00 PM → 9:30 PM).
-            The <strong class="warn">5-hour continuous work rule</strong> requires a proper 1-hour walk-away
-            meal break before the 5-hour mark. That deadline is midnight (7:00 PM + 5h = 12:00 AM).
-          </div>
-        </div>
-      </div>
-
-      <!-- 5 Break out -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot break-out">⏸️</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Break out
-            <span class="scan-time">May 19 · 12:45 AM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong class="running">Timer paused.</strong>
-            Work block 2 ends: <strong>7:00 PM → 12:45 AM = 5h 45m billable.</strong>
-            Running total: 2h 15m + 5h 45m = <strong>8h 0m.</strong>
-            <br><br>
-            <strong class="danger">⚠ Violation 1 triggered here.</strong>
-            The break came at the <strong>5h 45m mark</strong> of continuous work — 45 minutes past
-            the 5-hour deadline. The "Provided Meal" at 9:30 PM did not satisfy the break requirement
-            because Jenny never walked away. A meal penalty is assessed.
-          </div>
-        </div>
-      </div>
-
-      <!-- 6 Break in -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot break-in">▶️</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Break in
-            <span class="scan-time">May 19 · 1:00 AM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong class="running">Timer resumes.</strong>
-            Break duration: <strong>15 minutes.</strong>
-            Work block 3 begins at 1:00 AM. Running total: <strong>8h 0m billable.</strong>
-            The 10-hour OT threshold will be crossed at <strong>2:45 AM</strong>
-            (8h 0m + 2h 45m more = 10h total).
-          </div>
-        </div>
-      </div>
-
-      <!-- 7 Provided meal #2 -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot meal">☕</div>
-          <div class="scan-connector"></div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Provided meal
-            <span class="scan-time">May 19 · 3:30 AM</span>
-            <span class="scan-tag manual">Manual</span>
-            <span class="scan-tag no-stop">⚠ Timer does NOT stop</span>
-          </div>
-          <div class="scan-explain">
-            <strong>Second company-provided meal, again on-site.</strong>
-            Timer still running — no walk-away break logged.
-            <br><br>
-            At 3:30 AM Jenny is 2h 30m into block 3, for a running total of
-            <strong>8h 0m + 2h 30m = 10h 30m billable.</strong>
-            The <strong class="warn">10-hour second-meal rule</strong> required a second meal break once she crossed
-            10 hours of total work — which happened at approximately <strong>2:45 AM.</strong>
-            The provided meal arrived at 3:30 AM — <strong class="danger">45 minutes late.</strong>
-            <strong class="danger">⚠ Violation 2 triggered.</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8 Site out -->
-      <div class="scan-row">
-        <div class="scan-icon-col">
-          <div class="scan-dot site-out">🔴</div>
-        </div>
-        <div class="scan-content">
-          <div class="scan-title">
-            Site out
-            <span class="scan-time">May 19 · 6:30 AM</span>
-            <span class="scan-tag manual">Manual</span>
-          </div>
-          <div class="scan-explain">
-            <strong>Clock stops.</strong>
-            Work block 3: <strong>1:00 AM → 6:30 AM = 5h 30m billable.</strong>
-            Running total: 8h 0m + 5h 30m = <strong>13h 30m total billable.</strong>
-            Total shift including breaks: <strong>14 hours on site</strong> (4:30 PM → 6:30 AM).
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /timeline -->
-
-    <!-- violation summary -->
-    <div class="violation-box">
-      <h4>⚠ 2 Meal Violations — Why They Happened</h4>
-
-      <div class="viol-row">
-        <div class="viol-num">1</div>
-        <div class="viol-text">
-          <strong>First meal break — 45 minutes late.</strong>
-          After the 7:00 PM break-in, Jenny worked continuously until 12:45 AM —
-          5 hours 45 minutes. Labor rules require a proper 1-hour walk-away break
-          within 5 hours of continuous work (deadline: midnight).
-          The company provided a meal at 9:30 PM but Jenny ate on-site while working.
-          A <em>Provided Meal</em> does not satisfy this requirement — only a logged
-          <em>Break out → Break in</em> pair counts. Result: <strong>1 penalty at 1.5× hourly rate.</strong>
-        </div>
-      </div>
-
-      <div class="viol-row">
-        <div class="viol-num">2</div>
-        <div class="viol-text">
-          <strong>Second meal break — 45 minutes late.</strong>
-          A second meal is required once total billable hours cross 10 hours.
-          Jenny crossed the 10-hour mark at approximately 2:45 AM.
-          The second provided meal was logged at 3:30 AM — 45 minutes after the threshold.
-          Again, "provided meal" does not stop the clock, so the 10h mark passed with
-          no proper break. Result: <strong>1 penalty at 1.5× hourly rate.</strong>
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px 16px;font-size:0.78rem;color:#b91c1c;line-height:1.6;">
+          <strong>2 meal violations — both triggered at 3:30 AM</strong><br>
+          The 9:30 PM provided meal was fine: only 4h 45m of continuous work had passed, so no violation. After that meal reset the clock, Jenny worked another 5h 45m continuously (a 15-min break does <em>not</em> reset the continuous-work counter). At the 3:30 AM provided meal the system fired two violations simultaneously: <strong>first_meal</strong> (5h 45m &gt; 5h threshold) and <strong>second_meal</strong> (total 10.5h with only 1 qualifying meal). Each carries a 1.5× hourly-rate penalty added to Jenny's gross pay.
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- calculation -->
-    <div class="calc-box">
-      <h4>Pay Breakdown</h4>
-      <div class="calc-row"><span class="cr-label">Work block 1 &nbsp;(4:30 PM → 6:45 PM)</span><span class="cr-val">2h 15m</span></div>
-      <div class="calc-row"><span class="cr-label">Break 1 (not billable)</span><span class="cr-val">−15m</span></div>
-      <div class="calc-row"><span class="cr-label">Work block 2 &nbsp;(7:00 PM → 12:45 AM, incl. on-site meal)</span><span class="cr-val">5h 45m</span></div>
-      <div class="calc-row"><span class="cr-label">Break 2 (not billable)</span><span class="cr-val">−15m</span></div>
-      <div class="calc-row"><span class="cr-label">Work block 3 &nbsp;(1:00 AM → 6:30 AM, incl. on-site meal)</span><span class="cr-val">5h 30m</span></div>
-      <div class="calc-row" style="font-weight:700;color:var(--text);border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:4px;"><span class="cr-label">Total billable</span><span class="cr-val">13h 30m</span></div>
-      <div class="calc-row"><span class="cr-label">Regular pay &nbsp;&nbsp;(0 → 10h @ 1.0×)</span><span class="cr-val">10h 0m</span></div>
-      <div class="calc-row ot-row"><span class="cr-label">Overtime &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(10h → 13h 30m @ 1.5×)</span><span class="cr-val">3h 30m OT</span></div>
-      <div class="calc-row penalty-row"><span class="cr-label">Meal penalty #1 &nbsp;(first break 45 min late) @ 1.5× hourly</span><span class="cr-val">+1 penalty</span></div>
-      <div class="calc-row penalty-row"><span class="cr-label">Meal penalty #2 &nbsp;(second meal 45 min late) @ 1.5× hourly</span><span class="cr-val">+1 penalty</span></div>
-      <div class="calc-row total-row"><span class="cr-label">Billed to company (gross)</span><span class="cr-val">10h reg + 3.5h OT + 2 penalties</span></div>
-    </div>
-
-    <!-- manual correction -->
-    <div class="correction-demo">
-      <h4>✏️ Manual Correction — PM Override</h4>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Scan type</label>
-          <div class="field-val"><span class="fi">↪</span> Site out ▾</div>
-          <div class="form-hint">Options: Site in · Break out · Break in · Provided meal · Site out</div>
+  <!-- Screenshot 3: manual correction -->
+  <div style="margin-bottom:32px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">Manual Correction — PM adds or fixes a scan after the fact</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;">
+      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);max-width:340px;">
+        <img src="photos/ManualCorrectio.png" alt="Manual correction form" style="width:100%;display:block;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:0.82rem;line-height:1.6;">
+          <strong>When to use:</strong> crew forgot to scan in/out, or a scan was recorded at the wrong time. The PM selects a scan type, sets the corrected date &amp; time, and optionally adds a reason for the audit trail.<br><br>
+          Every manual correction is logged in <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:0.78rem;">editHistory[]</code> on the time entry — field, old value, new value, who corrected it, and when.
         </div>
-        <div class="form-field">
-          <label>Date &amp; time (local)</label>
-          <div class="field-val"><span class="fi">📅</span> 19/05/2026, 06:30 AM</div>
-          <div class="form-hint">Last scan: May 19 · 6:30 AM</div>
-        </div>
-        <div class="form-field">
-          <label>Reason</label>
-          <div class="field-val" style="color:var(--muted);">e.g. crew forgot to scan out</div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 16px;font-size:0.78rem;color:#1e40af;line-height:1.6;">
+          Confirmed entries (<strong>status: confirmed</strong>) are locked and cannot be overwritten by a QR scan — manual correction is the only path for already-confirmed rows. This prevents accidental clock-out re-opens after a PM has signed off.
         </div>
       </div>
-      <button class="add-btn">Add scan</button>
-      <div class="correction-explain">
-        <strong>When to use manual correction:</strong> If a crew member forgot to scan in or out, or scanned at the wrong time, the PM can add or remove any scan event with a free-text reason. Every correction is logged in a permanent edit history so the record is always auditable. Scans that were added manually are labelled <em>"Manual"</em> in the timeline (visible in all examples above).
-        <br><br>
-        <strong>All 5 scan types explained:</strong>
-        <br>• <strong>Site in</strong> — crew arrives on site; billable clock starts.
-        <br>• <strong>Break out</strong> — crew leaves the worksite for a break; clock pauses.
-        <br>• <strong>Break in</strong> — crew returns from break; clock resumes.
-        <br>• <strong>Provided meal</strong> — company catering delivered on-site. <strong>Clock does NOT stop.</strong> Records the company's obligation being met, but crew remains active. Does not satisfy labor-rule meal break requirements without an accompanying Break out/in.
-        <br>• <strong>Site out</strong> — crew departs; billable clock stops for the day.
+    </div>
+  </div>
+
+  <!-- Screenshot 4: scan types reference -->
+  <div style="margin-bottom:8px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">Scan Type Picker — Manual correction dropdown</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;">
+      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);max-width:320px;">
+        <img src="photos/ScanTypes.png" alt="Scan types dropdown" style="width:100%;display:block;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:0.82rem;line-height:1.8;">
+        The same 5 scan types used by QR scanning are available here for manual entry. The state-machine rules still apply server-side even for manual corrections — you can't add a <em>Break in</em> if the last scan isn't a <em>Break out</em>.
       </div>
     </div>
-
-  </div><!-- /scan-demo-wrap -->
+  </div>
 
   <!-- INVOICING -->
   <div class="section-label">Invoicing &amp; Reconciliation</div>
-  <div class="feature-grid">
+
+  <!-- 4 quick-fact cards -->
+  <div class="feature-grid" style="margin-bottom:28px;">
     <div class="feature-card">
       <span class="tag new">✦ New</span>
       <h3>Finalization Auto-Creates Invoices</h3>
-      <p>When a PM finalizes attendance, the platform automatically creates a supplemental invoice for each crew member based on their actual vs. scheduled hours:</p>
-      <ul>
-        <li>Positive delta → submitted invoice, charged to company via ACH/card</li>
-        <li>Negative delta → credit invoice, becomes company credit balance</li>
-        <li>Zero delta or no-show → no invoice created</li>
-      </ul>
+      <p>Positive delta → charge invoice. Negative delta → credit invoice. Zero or no-show → nothing. All auto-generated and submitted without PM intervention.</p>
     </div>
 
     <div class="feature-card">
       <span class="tag new">✦ New</span>
-      <h3>Company Credit Ledger — Auto-Applies to Next Invoices</h3>
-      <p>When a crew member works fewer hours than committed, a <strong>credit invoice</strong> is auto-generated. The credit balance sits in the company's ledger and is <strong>automatically applied to the next invoice on the same job</strong> — oldest credit consumed first (FIFO).</p>
-      <ul>
-        <li>Credit is applied when you click <em>"Apply Credit"</em> on any pending invoice — no manual math needed</li>
-        <li>Crew payout is always the full invoice subtotal — only the <strong>company charge</strong> is reduced</li>
-        <li>If the credit fully covers an invoice, the company is charged <strong>$0.00</strong></li>
-        <li>Remaining unused credit carries forward to the next invoice cycle</li>
-      </ul>
+      <h3>Credit Auto-Applies to Next Invoice</h3>
+      <p>Credits sit in a per-job ledger (FIFO). Click <em>"Apply Credit"</em> on any pending invoice and the oldest available credit is consumed first. Crew payout is always the full subtotal.</p>
     </div>
-
     <div class="feature-card">
       <span class="tag new">✦ New</span>
       <h3>Labor Reconciliation in Payments Tab</h3>
-      <p>The Payments tab now has a <strong>Labor Reconciliation</strong> section showing committed pay vs. actual pay from confirmed attendance, with OT and DT dollars surfaced per crew member.</p>
+      <p>Committed pay vs. actual pay, OT dollars, and DT dollars per crew member — surfaced directly in the Payments tab after attendance is confirmed.</p>
     </div>
-
     <div class="feature-card">
       <span class="tag new">✦ New</span>
-      <h3>Request Refund to Bank — Company &amp; Admin Flow</h3>
-      <p>If unused credit remains after all invoices on a job are settled, the company can <strong>request a cash refund to their bank account</strong>. The request is reviewed and processed by a Show Crew Network admin:</p>
-      <ul>
-        <li>Company sees the credit balance on their Invoices tab with a refund request option</li>
-        <li>Admin portal shows a <strong>"Refund to Bank"</strong> button on the job's Invoices &amp; Credits section</li>
-        <li>Admin processes the refund directly — no Stripe dashboard access required</li>
-        <li>Full audit trail: every credit creation, application, and refund is logged</li>
-      </ul>
+      <h3>Refund Unused Credit to Bank</h3>
+      <p>Company requests a refund from their Invoices tab. Admin sees the balance in the portal and processes the bank transfer in one click — no Stripe dashboard needed.</p>
     </div>
+  </div>
 
-    <!-- Live example -->
-    <div class="feature-card full" style="padding:0;overflow:hidden;">
-      <div style="padding:18px 22px 14px;border-bottom:1px solid var(--line);background:#f8faff;">
-        <span class="tag new" style="margin-bottom:8px;">✦ Live Example</span>
-        <h3 style="margin-top:6px;">Supplementary Invoices After Attendance Finalization</h3>
-        <p style="font-size:0.86rem;color:var(--muted);margin-top:6px;">Two crew members on the same job — one worked overtime (owed more), one worked fewer hours (company gets a credit).</p>
-      </div>
-
-      <!-- credit banner -->
-      <div style="background:#f0fdf4;border-bottom:1px solid #bbf7d0;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-        <span style="font-size:0.86rem;font-weight:700;color:#15803d;">● $54.75 company credit available</span>
-        <span style="font-size:0.78rem;color:var(--muted);">Auto-applies when you click "Apply Credit" on an invoice below</span>
-      </div>
-
-      <!-- Invoice 1: Rishabh Doshi (positive — OT owed) -->
-      <div style="border-bottom:1px solid var(--line);">
-        <div style="padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-          <div>
-            <div style="font-weight:700;font-size:0.92rem;">Rishabh Doshi</div>
-            <div style="font-size:0.78rem;color:var(--muted);">#16CA62CD · May 19, 2026 · 1 item</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="font-weight:800;font-size:1rem;">$9.38</span>
-            <span style="background:#dcfce7;color:#15803d;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Paid</span>
-          </div>
-        </div>
-        <div style="margin:0 22px 12px;background:#fafafa;border:1px solid var(--line);border-radius:8px;overflow:hidden;">
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
-            <div>
-              <span style="background:#fff7ed;color:#b45309;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Other</span>
-              <span style="font-size:0.86rem;">Overtime: 2.8h × $75/hr × 1.5</span>
-            </div>
-            <span style="font-weight:700;font-size:0.86rem;">$9.38</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:8px 14px;font-weight:800;font-size:0.86rem;color:var(--brand);">
-            <span>TOTAL</span><span>$9.38</span>
-          </div>
-        </div>
-        <div style="padding:0 22px 10px;font-size:0.78rem;color:var(--muted);">
-          <em>Auto-generated from attendance finalization. 1 day(s), 12.8h total billable.</em>
-          <span style="display:block;margin-top:4px;">Credit applied: <strong>$9.38</strong> → You'll be charged <strong style="color:#15803d;">$0.00</strong></span>
-        </div>
-      </div>
-
-      <!-- Invoice 2: Jenny Rosen (negative — credit) -->
-      <div>
-        <div style="padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-          <div>
-            <div style="font-weight:700;font-size:0.92rem;">Jenny Rosen</div>
-            <div style="font-size:0.78rem;color:var(--muted);">#501B70BC · May 19, 2026 · 2 items</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-weight:800;font-size:1rem;color:#15803d;">−$64.13</span>
-            <span style="background:#dbeafe;color:#1d4ed8;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Credit</span>
-            <span style="background:#dcfce7;color:#15803d;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Paid</span>
-          </div>
-        </div>
-        <div style="margin:0 22px 12px;background:#fafafa;border:1px solid var(--line);border-radius:8px;overflow:hidden;">
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
-            <div>
-              <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Credit</span>
-              <span style="font-size:0.86rem;">Overpayment refund: committed $700.00 vs actual $638.75</span>
-            </div>
-            <span style="font-weight:700;font-size:0.86rem;color:#15803d;">−$61.25</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
-            <div>
-              <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Credit</span>
-              <span style="font-size:0.86rem;">Service fee refund (4.7% on $61.25)</span>
-            </div>
-            <span style="font-weight:700;font-size:0.86rem;color:#15803d;">−$2.88</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:8px 14px;font-weight:800;font-size:0.86rem;color:#15803d;">
-            <span>TOTAL</span><span>−$64.13</span>
-          </div>
-        </div>
-        <div style="padding:0 22px 10px;font-size:0.78rem;color:var(--muted);">
-          <em>Credit: crew worked 13.5h vs 20.0h committed. Refund of $61.25 + $2.88 service fee.</em>
-        </div>
-        <div style="margin:0 22px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:0.82rem;color:#15803d;font-weight:600;">
-          ✓ This credit will be applied to the next invoice cycle. No payment is required.
-        </div>
-      </div>
-
-      <!-- how-it-works explainer -->
-      <div style="background:#f8faff;border-top:2px solid var(--line);padding:16px 22px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <div style="font-size:0.83rem;color:var(--muted);line-height:1.6;">
-          <strong style="color:var(--text);display:block;margin-bottom:4px;">How the credit cycle works</strong>
-          When Jenny worked 13.5h instead of the committed 20h, the platform calculated the overpayment ($700 committed − $638.75 actual = $61.25) plus the proportional service fee refund ($2.88). Both lines were combined into a single <strong>credit invoice</strong> of −$64.13, automatically approved and added to the company's credit balance.
-          <br><br>
-          Rishabh's overtime invoice of $9.38 was then settled by applying $9.38 of that credit — the company was charged $0.00.
-          The remaining <strong>$54.75</strong> sits as a credit balance ready for the next invoice.
-        </div>
-        <div style="font-size:0.83rem;color:var(--muted);line-height:1.6;">
-          <strong style="color:var(--text);display:block;margin-bottom:4px;">Want the cash back instead?</strong>
-          If no further invoices are expected on this job, the company can request a <strong>refund to bank</strong>. The request goes to a Show Crew Network admin who sees the $54.75 credit balance in the admin portal and processes the bank transfer with a single click — no Stripe dashboard needed.
-          <br><br>
-          The admin portal's <strong>Invoices &amp; Credits</strong> section on every job shows a <strong style="color:var(--brand);">"Refund to Bank" button</strong> alongside the full credit ledger for that job.
-        </div>
-      </div>
+  <!-- Screenshot 1: Company invoices tab -->
+  <div style="margin-bottom:32px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">Company portal — Supplementary Invoices after attendance finalization</div>
+    <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
+      <img src="photos/CompanyInovicePageCredit.png" alt="Company invoices tab showing Rishabh OT invoice and Jenny credit invoice" style="width:100%;display:block;">
     </div>
+    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#15803d;line-height:1.5;"><strong>$54.75 credit available</strong> — Jenny worked fewer hours than committed; credit auto-posted to the ledger</div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#1e40af;line-height:1.5;"><strong>Rishabh $9.38 OT — charged $0.00</strong> because the full $9.38 was covered by the credit</div>
+      <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#6d28d9;line-height:1.5;"><strong>Jenny −$64.13 credit invoice</strong> — committed $700 vs actual $638.75 = $61.25 + $2.88 service fee</div>
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#c2410c;line-height:1.5;"><strong>Both marked Paid</strong> — ACH batches already processed; remaining $54.75 sits as credit</div>
+    </div>
+  </div>
 
+  <!-- Screenshot 2: Admin portal refund to bank -->
+  <div style="margin-bottom:8px;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:8px;color:var(--text);">Admin portal — Invoices &amp; Credits with "Refund to Bank" action</div>
+    <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
+      <img src="photos/AdminPageInvoiceRefund.png" alt="Admin portal showing invoices and credits with refund to bank button" style="width:100%;display:block;">
+    </div>
+    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#1e40af;line-height:1.5;">Admin sees <strong>$54.75 credit balance remaining for this job</strong> alongside the full invoice ledger — both rows visible (Rishabh Invoice $9.38, Jenny Credit −$64.13)</div>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#15803d;line-height:1.5;"><strong>"Refund to Bank"</strong> button appears when unused credit exists — admin processes the bank transfer directly from this view</div>
+    </div>
   </div>
 
   <!-- CALL TYPES & SKILLS -->
