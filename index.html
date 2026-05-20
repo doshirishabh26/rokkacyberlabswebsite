@@ -3,346 +3,1059 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Show Crew Network demo 13th May 2026</title>
+  <title>Show Crew Network — Weekly Update · May 20, 2026</title>
   <style>
     :root {
-      --bg: #f4f6fb;
-      --card: #ffffff;
-      --text: #14213d;
-      --muted: #52607a;
-      --brand: #0f4aa3;
-      --line: #dbe4f2;
-      --shadow: 0 10px 26px rgba(17, 35, 74, 0.09);
-      --radius: 14px;
+      --bg: #f4f6fb; --card: #ffffff; --text: #14213d; --muted: #52607a;
+      --brand: #0f4aa3; --brand-light: #e8effe; --green: #0d7a4e; --green-bg: #e6f7f0;
+      --orange: #b45309; --orange-bg: #fff7ed; --purple: #5b21b6; --purple-bg: #f3f0ff;
+      --line: #dbe4f2; --shadow: 0 10px 26px rgba(17,35,74,0.09); --radius: 14px;
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    header { background: linear-gradient(135deg, #0a2f6e 0%, #1554c0 100%); color: #fff; padding: 52px 40px 44px; text-align: center; }
+    header .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-bottom: 10px; }
+    header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+    header .subtitle { font-size: 1.05rem; opacity: 0.8; max-width: 520px; margin: 0 auto; }
+    header .date-badge { display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 100px; padding: 5px 16px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
+    main { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
 
-    .hero {
-      background: linear-gradient(120deg, #0d2147 0%, #0f4aa3 55%, #1e7ef2 100%);
-      color: #fff;
-      text-align: center;
-      padding: 52px 24px 44px;
-    }
+    .section-label { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brand); margin: 44px 0 16px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
-    .hero h1 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 36px; }
+    .stat-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 18px; text-align: center; box-shadow: var(--shadow); }
+    .stat-card .num { font-size: 2.2rem; font-weight: 800; color: var(--brand); line-height: 1; }
+    .stat-card .label { font-size: 0.78rem; color: var(--muted); margin-top: 5px; font-weight: 600; }
 
-    .hero p {
-      margin-top: 10px;
-      opacity: 0.95;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 640px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+    .feature-card.full { grid-column: 1 / -1; }
+    .feature-card .tag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; width: fit-content; }
+    .tag.new  { background: var(--green-bg);  color: var(--green); }
+    .tag.fix  { background: var(--orange-bg); color: var(--orange); }
+    .tag.core { background: var(--brand-light); color: var(--brand); }
+    .tag.infra { background: var(--purple-bg); color: var(--purple); }
+    .feature-card h3 { font-size: 1.02rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .feature-card ul { padding-left: 18px; font-size: 0.86rem; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+    .feature-card ul li { line-height: 1.5; }
 
-    .meta {
-      margin-top: 16px;
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .photo-slot { background: #e8effe; border: 2px dashed #a8c0f0; border-radius: var(--radius); height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--brand); font-size: 0.8rem; font-weight: 600; }
+    .photo-slot .icon { font-size: 2rem; opacity: 0.4; }
 
-    .wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 22px;
-    }
+    footer { text-align: center; padding: 32px 20px; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 18px;
-    }
+    /* ── SCAN LOG DEMO ── */
+    .scan-demo-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .scan-demo-header { background: #f8faff; border-bottom: 1px solid var(--line); padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .scan-demo-header .crew-name { font-weight: 700; font-size: 1rem; }
+    .scan-demo-header .crew-role { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+    .scan-kpis { display: flex; gap: 18px; flex-wrap: wrap; }
+    .scan-kpi { text-align: right; }
+    .scan-kpi .kval { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .scan-kpi .klabel { font-size: 0.72rem; color: var(--muted); }
+    .scan-kpi .kval.ot { color: #b45309; }
+    .scan-kpi .kval.viol { color: #c0392b; }
 
-    h2 {
-      font-size: 1.28rem;
-      margin-bottom: 10px;
-      color: #10254f;
-    }
+    .scan-timeline { padding: 20px 22px; display: flex; flex-direction: column; gap: 0; }
+    .scan-row { display: flex; gap: 14px; position: relative; }
+    .scan-row:not(:last-child) .scan-line { content: ''; position: absolute; left: 19px; top: 36px; bottom: -4px; width: 2px; background: var(--line); z-index: 0; }
+    .scan-icon-col { width: 38px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding-top: 6px; position: relative; z-index: 1; }
+    .scan-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .scan-dot.site-in   { background: #dcfce7; }
+    .scan-dot.break-out { background: #fef9c3; }
+    .scan-dot.break-in  { background: #dcfce7; }
+    .scan-dot.meal      { background: #dbeafe; }
+    .scan-dot.site-out  { background: #fee2e2; }
+    .scan-connector { flex: 1; width: 2px; background: var(--line); min-height: 14px; margin: 3px 0; }
+    .scan-content { flex: 1; padding-bottom: 20px; }
+    .scan-row:last-child .scan-content { padding-bottom: 4px; }
+    .scan-title { font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .scan-time { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+    .scan-tag { font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .scan-tag.manual { background: #f3f0ff; color: #5b21b6; }
+    .scan-tag.no-stop { background: #fee2e2; color: #c0392b; }
+    .scan-explain { font-size: 0.83rem; color: var(--muted); margin-top: 4px; line-height: 1.55; }
+    .scan-explain strong { color: var(--text); }
+    .scan-explain .running { color: #0d7a4e; font-weight: 700; }
+    .scan-explain .warn { color: #b45309; font-weight: 700; }
+    .scan-explain .danger { color: #c0392b; font-weight: 700; }
 
-    h3 {
-      font-size: 1.06rem;
-      margin-bottom: 8px;
-      color: #16356e;
-    }
+    .block-bar { margin: 4px 0 8px; height: 8px; border-radius: 4px; display: flex; overflow: hidden; }
+    .block-reg  { background: #22c55e; }
+    .block-ot   { background: #f59e0b; }
 
-    .sub {
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
+    .violation-box { background: #fff5f5; border: 1px solid #fecaca; border-radius: 10px; padding: 16px 18px; margin: 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+    .violation-box h4 { font-size: 0.85rem; font-weight: 800; color: #c0392b; display: flex; align-items: center; gap: 6px; }
+    .viol-row { display: flex; gap: 12px; align-items: flex-start; }
+    .viol-num { width: 24px; height: 24px; border-radius: 50%; background: #c0392b; color: #fff; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .viol-text { font-size: 0.84rem; color: #7f1d1d; line-height: 1.55; }
+    .viol-text strong { color: #991b1b; }
 
-    ol {
-      padding-left: 22px;
-    }
+    .calc-box { background: #f8faff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 0 22px 18px; }
+    .calc-box h4 { font-size: 0.82rem; font-weight: 800; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .calc-row { display: flex; justify-content: space-between; font-size: 0.84rem; padding: 4px 0; border-bottom: 1px dashed var(--line); color: var(--muted); }
+    .calc-row:last-child { border-bottom: none; font-weight: 700; color: var(--text); }
+    .calc-row .cr-label { }
+    .calc-row .cr-val { font-weight: 600; color: var(--text); }
+    .calc-row.ot-row .cr-val { color: #b45309; }
+    .calc-row.penalty-row .cr-val { color: #c0392b; }
+    .calc-row.total-row { margin-top: 6px; padding-top: 8px; border-top: 2px solid var(--line); }
 
-    ul {
-      padding-left: 22px;
-      margin-top: 8px;
-      color: #23375d;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    .group {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-      background: #fbfcff;
-    }
-
-    .highlight {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-left: 4px solid var(--brand);
-      background: #eef4ff;
-      border-radius: 0 10px 10px 0;
-      font-size: 0.92rem;
-      color: #1e3566;
-      font-weight: 600;
-    }
-
-    .questions li {
-      font-weight: 600;
-      color: #1b2e52;
-    }
-
-    .shots {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .shot {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fbfcff;
-    }
-
-    .shot img {
-      display: block;
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .shot .cap {
-      padding: 10px 12px;
-      font-size: 0.9rem;
-      color: #2a3b5f;
-      font-weight: 600;
-    }
-
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
-      padding: 24px 12px 34px;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 1.65rem;
-      }
-
-      .wrap {
-        padding: 14px;
-      }
-
-      .card {
-        padding: 16px;
-      }
-    }
+    .correction-demo { background: #f8faff; border: 2px dashed #a8c0f0; border-radius: var(--radius); padding: 20px 22px; margin: 0 22px 22px; }
+    .correction-demo h4 { font-weight: 700; font-size: 0.92rem; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .form-field { flex: 1; min-width: 160px; }
+    .form-field label { display: block; font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .form-field .field-val { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-size: 0.86rem; color: var(--text); display: flex; align-items: center; gap: 7px; }
+    .form-field .field-val .fi { font-size: 0.9rem; opacity: 0.7; }
+    .form-hint { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+    .add-btn { background: #1554c0; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 0.86rem; font-weight: 700; cursor: pointer; margin-top: 6px; }
+    .correction-explain { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+    .correction-explain strong { color: var(--text); }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Show Crew Network demo 13th May 2026</h1>
-    <p>Feature summary for demo presentation</p>
-    <div class="meta">May 13, 2026</div>
-  </header>
 
-  <main class="wrap">
-    <section class="card">
-      <h2>Delivered Features</h2>
-      <p class="sub">Feature summary for presentation with tour screenshots attached.</p>
+<header>
+  <div class="eyebrow">Show Crew Network</div>
+  <h1>Weekly Product Update</h1>
+  <p class="subtitle">What shipped in the last 7 days — May 13 → May 20, 2026</p>
+  <div class="date-badge">🚀 May 20, 2026</div>
+</header>
 
-      <div class="group">
-        <h3>1. Tour Jobs support and payout added</h3>
-        <ul>
-          <li>Tour payments are charged through ACH flow.</li>
-          <li>Crew is paid out weekly.</li>
-          <li>Single attendance tab for the full tour.</li>
-          <li>AI call position support added for tour jobs.</li>
-          <li>Invoice support added for tours.</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/AIPositionTour.png" alt="Tour position creation step with AI Suggest Positions" />
-            <figcaption class="cap">AI-supported Tour Position setup</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/AttendanceTabTour.png" alt="Tour Time and Attendance tab with engagement dates" />
-            <figcaption class="cap">Single attendance tab for full tour engagement</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/NoShowMarkTour.png" alt="Tour no-show confirmation dialog" />
-            <figcaption class="cap">Tour no-show handling with payout impact messaging</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/CompanyPortalTourPaymentPageCommited.png" alt="Company portal tour payments tab showing committed amounts and next batch ETA" />
-            <figcaption class="cap">Company portal: committed tour payments and ACH batch ETA</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/CrewPortal-TourPaymentCommited.png" alt="Crew portal payouts page showing committed and escrow amounts" />
-            <figcaption class="cap">Crew portal: committed, escrow reserved, and payout tracking</figcaption>
-          </figure>
+<main>
+
+  <div class="section-label">This Week at a Glance</div>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">5</div><div class="label">Major Features</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">New Systems</div></div>
+    <div class="stat-card"><div class="num">48+</div><div class="label">Commits Shipped</div></div>
+    <div class="stat-card"><div class="num">2</div><div class="label">Apps Updated</div></div>
+    <div class="stat-card"><div class="num">0</div><div class="label">Build Errors</div></div>
+  </div>
+
+  <!-- TOUR PAYMENTS -->
+  <div class="section-label">Tour Payment System</div>
+  <div class="feature-grid">
+
+    <!-- mechanism explainer -->
+    <div class="feature-card full">
+      <span class="tag new">✦ New System</span>
+      <h3>How Tour Billing Works — Rolling Weekly ACH Instalments</h3>
+      <p>Tour jobs use a completely different billing model than events. Instead of one upfront charge, the platform creates a <strong>separate weekly commitment per crew member per work week</strong>, anchored to each person's individual start date on the tour.</p>
+      <ul>
+        <li><strong>Anchor day</strong> = max(tour start date, position start date, crew hire date). Each crew member's weekly billing clock starts from their anchor.</li>
+        <li><strong>Week 1 commitment</strong> — created the moment a crew member accepts an offer. ACH-pulled when within 7 days of the funding due date; charged to card immediately if the crew is hired inside that window.</li>
+        <li><strong>Week 2</strong> — auto-created on the day the tour starts. Same ACH / card-escalation rules apply.</li>
+        <li><strong>Week 3, 4, 5…</strong> — created automatically by a daily cron only on the crew member's anchor-day anniversary (every 7 days from tour start), preventing premature commitment creation.</li>
+        <li><strong>Funding due date</strong> = anchor + (week − 1) × 7 days — the start of that work week. ACH batch fires on or before this date.</li>
+        <li><strong>Crew payout eligible</strong> = anchor + week × 7 + 7 days — 7 days after the work week ends, paid out independently, no need to wait for job completion.</li>
+        <li>Mid-tour hires start their own weekly clock. A crew member who joins week 3 of a tour gets Week 1 committed at hire, not "Week 3" of the tour.</li>
+        <li>If no card is on file when a hire happens inside the T-7 window, the hire is automatically rolled back and the company is notified.</li>
+        <li><strong>T&amp;A has no effect on tour commitment amounts.</strong> Weekly pay is a flat contract — OT and attendance discrepancies do not change the weekly charge.</li>
+      </ul>
+    </div>
+
+    <!-- live payments tab example -->
+    <div class="feature-card full" style="padding:0;overflow:hidden;">
+      <div style="padding:16px 22px 14px;border-bottom:1px solid var(--line);background:#f8faff;">
+        <span class="tag core" style="margin-bottom:8px;">Live Example</span>
+        <h3 style="margin-top:6px;">Company Payments Tab — Tour Job</h3>
+        <p style="font-size:0.86rem;color:var(--muted);margin-top:5px;">Michelle Marie hired as Lighting Director. Week 1 committed at $474.92 (includes platform + processing fees). Crew net = $450. Funding due Jun 9 — crew paid after Jun 23.</p>
+      </div>
+
+      <!-- KPI row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);">
+        <div style="padding:16px 20px;border-right:1px solid var(--line);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Committed</div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--text);">$474.92</div>
+        </div>
+        <div style="padding:16px 20px;border-right:1px solid var(--line);">
+          <div style="font-size:0.7rem;font-weight:700;color:#0891b2;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Funds Held</div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--text);">$0</div>
+        </div>
+        <div style="padding:16px 20px;border-right:1px solid var(--line);">
+          <div style="font-size:0.7rem;font-weight:700;color:#15803d;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Paid</div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--text);">$0</div>
+        </div>
+        <div style="padding:16px 20px;">
+          <div style="font-size:0.7rem;font-weight:700;color:#c0392b;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Failed</div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--text);">$0</div>
         </div>
       </div>
 
-      <div class="group">
-        <h3>2. Invoice support extended</h3>
-        <ul>
-          <li>Invoices are now paid from regular ACH cron flows.</li>
-          <li>After invoice approval and funds arrival, payout to crew is processed after 7 days.</li>
-          <li>Invoice tab was upgraded and clearly segregated from commitments/batches payment views.</li>
-          <li>Crew can now see invoice status directly (for example: Funds Held, payout eligibility timeline).</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/InvoiceTabUpgradation.png" alt="Company portal upgraded invoice tab with supplementary invoice list" />
-            <figcaption class="cap">Company portal: upgraded Invoice tab UI</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/InvoicesPaymwntIntegratedwithPaymentsTab.png" alt="Company job view showing invoice and payments tab segregation" />
-            <figcaption class="cap">Invoice and Payments tab segregation in company job workflow</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/InvoiceFundsHeld.png" alt="Crew portal invoice view showing Funds Held status and payout eligibility" />
-            <figcaption class="cap">Crew portal: invoice status visibility (Funds Held + payout date)</figcaption>
-          </figure>
+      <!-- next batch ETA -->
+      <div style="padding:14px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Next Batch ETA</div>
+          <div style="font-size:1rem;font-weight:800;margin-top:2px;">tomorrow — May 21, 2026</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Tour weekly instalment due for ACH batch</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.72rem;color:var(--muted);">Original funded value (commitments)</div>
+          <div style="font-size:1.1rem;font-weight:800;color:var(--brand);">$474.92</div>
         </div>
       </div>
 
-      <div class="group">
-        <h3>3. UI enhancements for the Job Stepper</h3>
-        <ul>
-          <li>Added a job timeline stepper to show lifecycle progress clearly: Draft → Published → Crew Hired → Funded → In Progress → Completed.</li>
-          <li>Current stage is visually highlighted so teams know exactly where the job is in the operational pipeline.</li>
-          <li>Stepper appears directly on job detail for faster status awareness during live operations.</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/StepperJobTimeline.png" alt="Job detail timeline stepper showing Draft, Published, Crew Hired, Funded, In Progress, and Completed stages" />
-            <figcaption class="cap">Job timeline stepper with clear progression stages</figcaption>
-          </figure>
+      <!-- info banner -->
+      <div style="margin:14px 22px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:0.82rem;color:#1e40af;line-height:1.55;">
+        ℹ️ <strong>Tour billing:</strong> flat weekly instalments — one row per crew member per week. Funding due dates drive ACH batches; crew payouts release 7 days after each work week ends. <strong>Time &amp; attendance does not change tour commitment amounts.</strong>
+      </div>
+
+      <!-- weekly instalments table -->
+      <div style="margin:0 22px 20px;">
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:4px;">Weekly Instalments <span style="background:var(--brand-light);color:var(--brand);font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:100px;margin-left:6px;">1</span></div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:10px;">One row per crew member per billing week — charge amount includes platform and processing fees.</div>
+        <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+            <thead style="background:#f8faff;">
+              <tr>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Crew</th>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Week</th>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Position</th>
+                <th style="text-align:right;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Charge</th>
+                <th style="text-align:right;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Crew net</th>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Status</th>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Funding due</th>
+                <th style="text-align:left;padding:8px 12px;font-weight:700;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">Crew paid after</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;">
+                <td style="padding:10px 12px;font-weight:600;">Michelle Marie</td>
+                <td style="padding:10px 12px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:100px;">Week 1</span></td>
+                <td style="padding:10px 12px;color:var(--muted);">Lighting Director</td>
+                <td style="padding:10px 12px;text-align:right;font-weight:800;">$474.92</td>
+                <td style="padding:10px 12px;text-align:right;color:var(--muted);">$450</td>
+                <td style="padding:10px 12px;"><span style="background:#e0e7ff;color:#3730a3;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:100px;">Committed</span></td>
+                <td style="padding:10px 12px;color:var(--muted);">Jun 9, 2026</td>
+                <td style="padding:10px 12px;color:var(--muted);">Jun 23, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;font-size:0.78rem;color:var(--muted);line-height:1.5;">
+          <strong style="color:var(--text);">Reading the table:</strong>
+          Charge ($474.92) = crew net ($450) + 5% platform fee + ACH processing fee.
+          Funding due (Jun 9) = tour anchor + 0 × 7 days = the start of Week 1.
+          Crew paid after (Jun 23) = funding due + 7 days work week + 7 days hold = Jun 9 + 14 days.
+          Status stays <em>Committed</em> until the ACH batch fires.
+        </div>
+      </div>
+    </div>
+
+    <!-- crew profile weekly rates -->
+    <div class="feature-card full" style="padding:0;overflow:hidden;">
+      <div style="padding:16px 22px 14px;border-bottom:1px solid var(--line);background:#f8faff;">
+        <span class="tag core" style="margin-bottom:8px;">Crew Portal</span>
+        <h3 style="margin-top:6px;">Per-Skill Weekly Tour Rate — Separate from Event Rate</h3>
+        <p style="font-size:0.86rem;color:var(--muted);margin-top:5px;">Crew members set two independent rates per skill: an hourly/daily event rate (H/D) and a weekly tour rate ($/wk). These are completely separate fields — setting a tour rate does not affect the event rate and vice versa.</p>
+      </div>
+      <div style="padding:16px 22px;">
+        <!-- skill rows -->
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;">
+
+          <!-- Lighting Director -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:20px;height:20px;border-radius:4px;background:#1554c0;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#fff;font-size:0.6rem;font-weight:800;">✓</span>
+              </div>
+              <span style="font-weight:700;font-size:0.92rem;">Lighting Director</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">H</span>
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">D</span>
+                <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:0.86rem;font-weight:600;min-width:80px;text-align:center;">$ 200 <span style="color:var(--muted);font-weight:400;">/hr</span></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:0.86rem;color:var(--muted);min-width:80px;text-align:center;">$ — <span style="font-weight:400;">/wk</span></div>
+                <span style="font-size:0.7rem;color:var(--muted);">tour</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lighting Tech (filled weekly) -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);background:#f0f9ff;flex-wrap:wrap;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:20px;height:20px;border-radius:4px;background:#1554c0;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#fff;font-size:0.6rem;font-weight:800;">✓</span>
+              </div>
+              <span style="font-weight:700;font-size:0.92rem;">Lighting Tech</span>
+              <span style="font-size:0.75rem;color:#0891b2;font-weight:600;">3 specialties</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">H</span>
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">D</span>
+                <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:0.86rem;font-weight:600;min-width:80px;text-align:center;">$ 50 <span style="color:var(--muted);font-weight:400;">/hr</span></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <div style="background:#fff;border:2px solid #1554c0;border-radius:6px;padding:5px 10px;font-size:0.86rem;font-weight:700;color:#1554c0;min-width:80px;text-align:center;">$ 200 <span style="font-weight:400;">/wk</span></div>
+                <span style="font-size:0.7rem;color:var(--muted);">tour</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Follow Spot Op -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;flex-wrap:wrap;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:20px;height:20px;border-radius:4px;background:#1554c0;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#fff;font-size:0.6rem;font-weight:800;">✓</span>
+              </div>
+              <span style="font-weight:700;font-size:0.92rem;">Follow Spot Op</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">H</span>
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:800;padding:2px 5px;border-radius:3px;">D</span>
+                <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:0.86rem;font-weight:600;min-width:80px;text-align:center;">$ 60 <span style="color:var(--muted);font-weight:400;">/hr</span></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:0.86rem;font-weight:600;min-width:80px;text-align:center;">$ 189 <span style="color:var(--muted);font-weight:400;">/wk</span></div>
+                <span style="font-size:0.7rem;color:var(--muted);">tour</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div style="margin-top:12px;font-size:0.83rem;color:var(--muted);line-height:1.6;">
+          <strong style="color:var(--text);">How it works:</strong> The <strong>H / D</strong> toggle and $/hr field are the crew member's <em>event rate</em> — used for single-day shows, load-ins, and any non-tour call. The <strong>$/wk</strong> field is a separate <em>tour rate</em>, only visible to companies creating tour jobs. Crew can set both, either, or neither. If a tour rate is set, it pre-fills the rate field when a company sends a tour offer for that skill. The Save button activates as soon as either the event rate or the tour rate has a value.
+        </div>
+      </div>
+    </div>
+
+    <!-- offer flow + batch timing side by side -->
+    <div class="feature-card">
+      <span class="tag core">Offer Flow</span>
+      <h3>Weekly-Only Pay Type for Tour Offers</h3>
+      <p>The Send Offer dialog locks to <strong>Weekly</strong> when opening on a tour position — Hourly and Daily options are hidden. The rate pre-fills from the position's budget or the crew member's $/wk rate.</p>
+      <p style="margin-top:6px;">Once accepted, the offer immediately creates a <strong>Week 1 commitment</strong> and queues it for the next ACH batch — no further action needed from the company.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag core">Batch Timing</span>
+      <h3>When Does the Money Actually Move?</h3>
+      <ul>
+        <li><strong>ACH pull</strong> — fires when a commitment's funding due date is within 7 days</li>
+        <li><strong>Card charge</strong> — fires immediately if the hire happens inside the 7-day window</li>
+        <li><strong>Settlement</strong> — ACH typically settles in 2–4 business days; funds move to Stripe balance</li>
+        <li><strong>Crew payout</strong> — 7 days after the work week ends, Stripe Connect transfer fires to crew's bank account automatically</li>
+        <li>All of this is fully automated — companies set it up once and the platform handles every week</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ATTENDANCE -->
+  <div class="section-label">Daily Attendance &amp; Time Tracking</div>
+  <div class="feature-grid">
+    <div class="feature-card full">
+      <span class="tag new">✦ New System</span>
+      <h3>Scan-Based Daily Attendance (v2) — Replaces Legacy Timesheet</h3>
+      <p>A new QR-scan-first attendance system built for the realities of live production:</p>
+      <ul>
+        <li>Crew scan in/out via QR code on site — works cross-browser including Safari</li>
+        <li>PM can manually add or remove scans with a reason; full edit history is logged</li>
+        <li>Per-day KPI summary: on-time, late, no-show, overtime flags at a glance</li>
+        <li><strong>Approaching OT banner</strong> with inline chips when crew are nearing the 10-hour mark mid-shift</li>
+        <li>Per-crew drawer shows full scan timeline, OT tier breakdown (regular → 1.5× → 2×), and meal/rest-break violations</li>
+        <li><strong>Confirm Day</strong> locks a date and computes pay; <strong>Finalize &amp; Submit to Payroll</strong> closes the job and auto-generates supplemental invoices per crew for any delta vs. committed amount</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Hotel Provided for Crew — Set at Job Creation, Affects OT Calculations</h3>
+      <p>
+        A new <strong>"Hotel provided for crew"</strong> checkbox has been added to the
+        <strong>Additional Details</strong> section of the job creation wizard (alongside
+        Require US Passport, Dress Code, and Tags).
+      </p>
+      <ul>
+        <li>Signals to crew that accommodation is covered for out-of-town talent — shown prominently on the job listing to attract a wider radius of applicants</li>
+        <li>When checked, the <strong>short-turnaround rest threshold drops from 8 hours to 6 hours</strong> — crew earn overtime sooner on back-to-back show days because hotel guests are expected to commute faster</li>
+        <li>The setting flows through to the Time &amp; Attendance tab automatically — no separate toggle needed on each attendance day</li>
+        <li>PMs can still override the hotel flag per individual crew member on the attendance tab if a specific person is commuting locally</li>
+      </ul>
+      <p style="margin-top:6px;font-size:0.82rem;color:var(--muted);">
+        <strong style="color:var(--text);">Example:</strong> Jenny works Mon night until 2 AM, then is called back at 8 AM Tuesday.
+        Without hotel: 6-hour gap &gt; 8h threshold → no OT carryover.
+        <em>With hotel checked:</em> 6-hour gap = exactly 6h threshold → short-turnaround kicks in → Tuesday OT clock starts earlier.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Meal Break &amp; Rest Break Violations</h3>
+      <p>Automated violation detection built directly into pay calculation:</p>
+      <ul>
+        <li>First and second meal break windows tracked per work block</li>
+        <li>15-minute rest break required between hours 2–3 of each block</li>
+        <li>Violations shown inline on the PM's view; each violation adds 1.5× hourly to crew gross pay</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag fix">Hardening</span>
+      <h3>Scan Reliability Fixes</h3>
+      <ul>
+        <li>60-second minimum between scans — prevents accidental double-scan</li>
+        <li>Wall-clock date must match the selected attendance date — rejects screenshots from the wrong day</li>
+        <li>QR scanner library pinned to a stable version (Safari compatible)</li>
+        <li>Attendance queries migrated to DynamoDB GSI — no more table scans</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SCAN STATES -->
+  <div class="section-label">Scan States &amp; Valid Transitions</div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:22px;line-height:1.6;">
+    Every QR scan advances a state machine. The system enforces which scan type can legally follow the previous one — invalid transitions are rejected server-side. <strong style="color:var(--text);">Auto-detect</strong> mode (the default) reads the crew member's last recorded state and pre-selects the only logical next step.
+  </p>
+
+  <!-- State cards row -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-bottom:28px;">
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:var(--shadow);border-top:3px solid #22c55e;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.2rem;">→</span>
+        <span style="font-weight:700;font-size:0.95rem;color:#16a34a;">Site In</span>
+        <span style="margin-left:auto;background:#dcfce7;color:#15803d;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;">Clock starts</span>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin:0 0 10px;line-height:1.5;">Crew member arrives on site. Billable time begins from this timestamp.</p>
+      <div style="font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;">
+        <span style="color:var(--text);font-weight:600;">From:</span> <em>none</em> (first scan) &nbsp;·&nbsp; <em>site_out</em> (re-entry)<br>
+        <span style="color:var(--text);font-weight:600;">Next:</span> Break out &nbsp;·&nbsp; Provided meal &nbsp;·&nbsp; Site out
+      </div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:var(--shadow);border-top:3px solid #f59e0b;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.2rem;">⏸</span>
+        <span style="font-weight:700;font-size:0.95rem;color:#d97706;">Break Out</span>
+        <span style="margin-left:auto;background:#fef3c7;color:#b45309;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;">Clock pauses</span>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin:0 0 10px;line-height:1.5;">Crew leaves for an unpaid break. Billable hours stop accumulating. Meal-break window opens.</p>
+      <div style="font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;">
+        <span style="color:var(--text);font-weight:600;">From:</span> <em>site_in</em> &nbsp;·&nbsp; <em>break_in</em> &nbsp;·&nbsp; <em>provided_meal</em><br>
+        <span style="color:var(--text);font-weight:600;">Next:</span> Break in &nbsp;·&nbsp; Site out
+      </div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:var(--shadow);border-top:3px solid #22c55e;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.2rem;">▶</span>
+        <span style="font-weight:700;font-size:0.95rem;color:#16a34a;">Break In</span>
+        <span style="margin-left:auto;background:#dcfce7;color:#15803d;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;">Clock resumes</span>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin:0 0 10px;line-height:1.5;">Crew returns from break. Billable hours resume. The break duration is excluded from the day total.</p>
+      <div style="font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;">
+        <span style="color:var(--text);font-weight:600;">From:</span> <em>break_out</em><br>
+        <span style="color:var(--text);font-weight:600;">Next:</span> Break out &nbsp;·&nbsp; Provided meal &nbsp;·&nbsp; Site out
+      </div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:var(--shadow);border-top:3px solid #a855f7;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.2rem;">☕</span>
+        <span style="font-weight:700;font-size:0.95rem;color:#9333ea;">Provided Meal</span>
+        <span style="margin-left:auto;background:#f3e8ff;color:#7e22ce;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;">Clock running</span>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin:0 0 10px;line-height:1.5;">Company provided an on-site meal. Crew stays on the clock for 30 min — satisfies the meal-break obligation without pausing pay.</p>
+      <div style="font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;">
+        <span style="color:var(--text);font-weight:600;">From:</span> <em>site_in</em> &nbsp;·&nbsp; <em>break_in</em> &nbsp;·&nbsp; <em>provided_meal</em><br>
+        <span style="color:var(--text);font-weight:600;">Next:</span> Break out &nbsp;·&nbsp; Provided meal &nbsp;·&nbsp; Site out
+      </div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;box-shadow:var(--shadow);border-top:3px solid #6b7280;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.2rem;">←</span>
+        <span style="font-weight:700;font-size:0.95rem;color:#374151;">Site Out</span>
+        <span style="margin-left:auto;background:#f3f4f6;color:#4b5563;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;">Clock stops</span>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin:0 0 10px;line-height:1.5;">Crew leaves for the day. Final billable total is locked. A second <em>Site In</em> is allowed if crew returns later.</p>
+      <div style="font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;">
+        <span style="color:var(--text);font-weight:600;">From:</span> <em>site_in</em> &nbsp;·&nbsp; <em>break_out</em> &nbsp;·&nbsp; <em>break_in</em> &nbsp;·&nbsp; <em>provided_meal</em><br>
+        <span style="color:var(--text);font-weight:600;">Next:</span> Site in (re-entry only)
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Transition matrix -->
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:var(--shadow);margin-bottom:14px;overflow-x:auto;">
+    <div style="font-weight:700;font-size:0.88rem;margin-bottom:14px;color:var(--text);">State Transition Matrix — what is valid after each scan</div>
+    <table style="width:100%;border-collapse:collapse;font-size:0.8rem;min-width:500px;">
+      <thead>
+        <tr style="background:#f8faff;">
+          <th style="text-align:left;padding:8px 12px;border:1px solid var(--line);color:var(--muted);font-weight:600;">Previous scan</th>
+          <th style="padding:8px 10px;border:1px solid var(--line);color:#16a34a;font-weight:700;">Site in</th>
+          <th style="padding:8px 10px;border:1px solid var(--line);color:#d97706;font-weight:700;">Break out</th>
+          <th style="padding:8px 10px;border:1px solid var(--line);color:#16a34a;font-weight:700;">Break in</th>
+          <th style="padding:8px 10px;border:1px solid var(--line);color:#9333ea;font-weight:700;">Provided meal</th>
+          <th style="padding:8px 10px;border:1px solid var(--line);color:#6b7280;font-weight:700;">Site out</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px 12px;border:1px solid var(--line);color:var(--muted);font-style:italic;">None (day start)</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td style="padding:8px 12px;border:1px solid var(--line);font-weight:600;color:#16a34a;">Site in</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;border:1px solid var(--line);font-weight:600;color:#d97706;">Break out</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td style="padding:8px 12px;border:1px solid var(--line);font-weight:600;color:#16a34a;">Break in</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;border:1px solid var(--line);font-weight:600;color:#9333ea;">Provided meal</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓</td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td style="padding:8px 12px;border:1px solid var(--line);font-weight:600;color:#6b7280;">Site out</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#dcfce7;font-weight:700;color:#15803d;">✓ <span style="font-weight:400;font-size:0.7rem;">(re-entry)</span></td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+          <td style="padding:8px 10px;border:1px solid var(--line);text-align:center;background:#f9fafb;color:#d1d5db;">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.75rem;color:var(--muted);margin:10px 0 0;">Any scan that violates this matrix is rejected with a 400 error — the QR scanner shows the crew member a clear "invalid scan order" message. The <strong style="color:var(--text);">Auto-detect</strong> option makes the common path effortless: it reads the crew member's last state and pre-selects the only valid next step, so the PM just taps Scan without thinking about state at all.</p>
+  </div>
+
+  <!-- SCAN LOG WALKTHROUGH -->
+  <div class="section-label">Live Example — Scan Log &amp; Violation Breakdown</div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:18px;line-height:1.6;">
+    Here is a real scan log from a 14-hour overnight shift. Walk through each event, see exactly why the timer stays running through a <em>Provided Meal</em>, and understand how the two meal violations are calculated.
+  </p>
+
+  <div class="scan-demo-wrap">
+    <!-- header -->
+    <div class="scan-demo-header">
+      <div>
+        <div class="crew-name">Jenny Rosen</div>
+        <div class="crew-role">Stagehand · Mon May 18, 2026 → Tue May 19, 2026 &nbsp;·&nbsp; Local commute (8h short turn)</div>
+      </div>
+      <div class="scan-kpis">
+        <div class="scan-kpi"><div class="kval">13h 30m</div><div class="klabel">Billable</div></div>
+        <div class="scan-kpi"><div class="kval ot">3h 30m OT</div><div class="klabel">Overtime (1.5×)</div></div>
+        <div class="scan-kpi"><div class="kval">30m</div><div class="klabel">Breaks</div></div>
+        <div class="scan-kpi"><div class="kval viol">2 violations</div><div class="klabel">Meal issues</div></div>
+      </div>
+    </div>
+
+    <!-- timeline -->
+    <div class="scan-timeline">
+
+      <!-- 1 Site in -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot site-in">🟢</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Site in
+            <span class="scan-time">May 18 · 4:30 PM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong>Clock starts.</strong> Jenny arrives on site and is logged in.
+            The billable timer begins at 4:30 PM. Work block 1 begins.
+            All time from this point forward counts toward her daily total unless a
+            <em>Break out</em> is logged.
+          </div>
         </div>
       </div>
 
-      <div class="group">
-        <h3>4. Added company-level minimum hours override field</h3>
-        <ul>
-          <li>New Company Profile → Pay Policies page enables skill-level minimum-hours override.</li>
-          <li>Company can search for a specific skill and set custom minimum billable hours.</li>
-          <li>Overrides are applied per company without changing platform defaults globally.</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/PayPoliceisTabSkillOverride.png" alt="Company profile pay policies page showing skill-level minimum-hours override list" />
-            <figcaption class="cap">Company portal: Pay Policies tab with skill-level override controls</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/StageHandMinimumOverride.png" alt="Company pay policies search showing stagehand minimum-hours override applied" />
-            <figcaption class="cap">Company override example: Stagehand minimum hours set to 5 hrs</figcaption>
-          </figure>
+      <!-- 2 Break out -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot break-out">⏸️</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Break out
+            <span class="scan-time">May 18 · 6:45 PM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong class="running">Timer paused.</strong>
+            Work block 1 ends: <strong>4:30 PM → 6:45 PM = 2h 15m billable.</strong>
+            Jenny steps away from the worksite. This is a proper walk-away break —
+            the clock stops.
+          </div>
         </div>
       </div>
 
-      <div class="group">
-        <h3>5. Added Duplicate Job for company ease-of-use</h3>
-        <ul>
-          <li>Company can duplicate an existing job directly from the job action menu.</li>
-          <li>Duplicate flow creates a new draft with copied structure for faster setup.</li>
-          <li>Wizard opens prefilled so teams can quickly adjust dates/details and publish.</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/DuplicateJobOption.png" alt="Job action menu showing Duplicate Job option" />
-            <figcaption class="cap">Action menu includes Duplicate Job option</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/DuplicateJobCreationOptions.png" alt="Duplicate job confirmation dialog with options" />
-            <figcaption class="cap">Duplicate creation modal with copy options</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/DuplicateJobCreated.png" alt="New duplicated job draft created in wizard" />
-            <figcaption class="cap">New draft created from duplicate and opened in wizard</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="photos/DuplicateJobBanner.png" alt="Duplicate job flow status shown in job stepper context" />
-            <figcaption class="cap">Duplicated job shown in standard stepper-driven workflow</figcaption>
-          </figure>
+      <!-- 3 Break in -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot break-in">▶️</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Break in
+            <span class="scan-time">May 18 · 7:00 PM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong class="running">Timer resumes.</strong>
+            Break duration: <strong>15 minutes</strong> (6:45 → 7:00 PM). Break time does not count as billable.
+            Work block 2 begins at 7:00 PM. Running total billable so far: <strong>2h 15m.</strong>
+          </div>
         </div>
       </div>
 
-      <div class="group">
-        <h3>6. Crew rate tab now supports hourly and daily rate</h3>
-        <ul>
-          <li>Crew Profile → Skills & Rates tab now supports both hourly and daily rate selection.</li>
-          <li>Rate type is visible per skill, giving companies clearer rate expectations during matching.</li>
-        </ul>
-        <div class="shots">
-          <figure class="shot">
-            <img src="photos/crew-dailyandhourlyrates.png" alt="Crew profile skills and rates tab showing hourly and daily rate toggle" />
-            <figcaption class="cap">Crew portal: Skills & Rates supports hourly and daily rates</figcaption>
-          </figure>
+      <!-- 4 Provided meal #1 -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot meal">☕</div>
+          <div class="scan-connector"></div>
         </div>
-        <div class="highlight">Only daily hours are currently used for the calculation.</div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Provided meal
+            <span class="scan-time">May 18 · 9:30 PM</span>
+            <span class="scan-tag manual">Manual</span>
+            <span class="scan-tag no-stop">⚠ Timer does NOT stop</span>
+          </div>
+          <div class="scan-explain">
+            <strong>The company brought catering to the worksite.</strong>
+            Jenny ate on-site while the production continued. A <em>Provided Meal</em> event records that the company fulfilled their catering obligation —
+            <strong class="danger">but it is not a proper walk-away break.</strong>
+            The billable clock keeps running. No "Break out" was logged, so legally
+            the meal does not count as a rest period under labor rules.
+            <br><br>
+            At this point Jenny is 2h 30m into work block 2 (7:00 PM → 9:30 PM).
+            The <strong class="warn">5-hour continuous work rule</strong> requires a proper 1-hour walk-away
+            meal break before the 5-hour mark. That deadline is midnight (7:00 PM + 5h = 12:00 AM).
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section class="card">
-      <h2>Open Questions</h2>
-      <ol class="questions">
-        <li>Does tour need a call schedule?</li>
-        <li>Does tour need to have a call sheet?</li>
-        <li>Does tour need to have an attendance sheet?</li>
-        <li>Is overtime needed to be calculated in the tour?</li>
-        <li>How do we want tour payment to happen? Currently it uses the same batch trigger as event jobs, and payouts are weekly.</li>
-        <li>Does it make sense for crew to expect a minimum daily payment irrespective of minimum hours if they set a daily rate?</li>
-      </ol>
-    </section>
-  </main>
+      <!-- 5 Break out -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot break-out">⏸️</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Break out
+            <span class="scan-time">May 19 · 12:45 AM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong class="running">Timer paused.</strong>
+            Work block 2 ends: <strong>7:00 PM → 12:45 AM = 5h 45m billable.</strong>
+            Running total: 2h 15m + 5h 45m = <strong>8h 0m.</strong>
+            <br><br>
+            <strong class="danger">⚠ Violation 1 triggered here.</strong>
+            The break came at the <strong>5h 45m mark</strong> of continuous work — 45 minutes past
+            the 5-hour deadline. The "Provided Meal" at 9:30 PM did not satisfy the break requirement
+            because Jenny never walked away. A meal penalty is assessed.
+          </div>
+        </div>
+      </div>
 
-  <footer class="footer">
-    Show Crew Network demo page
-  </footer>
+      <!-- 6 Break in -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot break-in">▶️</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Break in
+            <span class="scan-time">May 19 · 1:00 AM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong class="running">Timer resumes.</strong>
+            Break duration: <strong>15 minutes.</strong>
+            Work block 3 begins at 1:00 AM. Running total: <strong>8h 0m billable.</strong>
+            The 10-hour OT threshold will be crossed at <strong>2:45 AM</strong>
+            (8h 0m + 2h 45m more = 10h total).
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 Provided meal #2 -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot meal">☕</div>
+          <div class="scan-connector"></div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Provided meal
+            <span class="scan-time">May 19 · 3:30 AM</span>
+            <span class="scan-tag manual">Manual</span>
+            <span class="scan-tag no-stop">⚠ Timer does NOT stop</span>
+          </div>
+          <div class="scan-explain">
+            <strong>Second company-provided meal, again on-site.</strong>
+            Timer still running — no walk-away break logged.
+            <br><br>
+            At 3:30 AM Jenny is 2h 30m into block 3, for a running total of
+            <strong>8h 0m + 2h 30m = 10h 30m billable.</strong>
+            The <strong class="warn">10-hour second-meal rule</strong> required a second meal break once she crossed
+            10 hours of total work — which happened at approximately <strong>2:45 AM.</strong>
+            The provided meal arrived at 3:30 AM — <strong class="danger">45 minutes late.</strong>
+            <strong class="danger">⚠ Violation 2 triggered.</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 Site out -->
+      <div class="scan-row">
+        <div class="scan-icon-col">
+          <div class="scan-dot site-out">🔴</div>
+        </div>
+        <div class="scan-content">
+          <div class="scan-title">
+            Site out
+            <span class="scan-time">May 19 · 6:30 AM</span>
+            <span class="scan-tag manual">Manual</span>
+          </div>
+          <div class="scan-explain">
+            <strong>Clock stops.</strong>
+            Work block 3: <strong>1:00 AM → 6:30 AM = 5h 30m billable.</strong>
+            Running total: 8h 0m + 5h 30m = <strong>13h 30m total billable.</strong>
+            Total shift including breaks: <strong>14 hours on site</strong> (4:30 PM → 6:30 AM).
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <!-- violation summary -->
+    <div class="violation-box">
+      <h4>⚠ 2 Meal Violations — Why They Happened</h4>
+
+      <div class="viol-row">
+        <div class="viol-num">1</div>
+        <div class="viol-text">
+          <strong>First meal break — 45 minutes late.</strong>
+          After the 7:00 PM break-in, Jenny worked continuously until 12:45 AM —
+          5 hours 45 minutes. Labor rules require a proper 1-hour walk-away break
+          within 5 hours of continuous work (deadline: midnight).
+          The company provided a meal at 9:30 PM but Jenny ate on-site while working.
+          A <em>Provided Meal</em> does not satisfy this requirement — only a logged
+          <em>Break out → Break in</em> pair counts. Result: <strong>1 penalty at 1.5× hourly rate.</strong>
+        </div>
+      </div>
+
+      <div class="viol-row">
+        <div class="viol-num">2</div>
+        <div class="viol-text">
+          <strong>Second meal break — 45 minutes late.</strong>
+          A second meal is required once total billable hours cross 10 hours.
+          Jenny crossed the 10-hour mark at approximately 2:45 AM.
+          The second provided meal was logged at 3:30 AM — 45 minutes after the threshold.
+          Again, "provided meal" does not stop the clock, so the 10h mark passed with
+          no proper break. Result: <strong>1 penalty at 1.5× hourly rate.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- calculation -->
+    <div class="calc-box">
+      <h4>Pay Breakdown</h4>
+      <div class="calc-row"><span class="cr-label">Work block 1 &nbsp;(4:30 PM → 6:45 PM)</span><span class="cr-val">2h 15m</span></div>
+      <div class="calc-row"><span class="cr-label">Break 1 (not billable)</span><span class="cr-val">−15m</span></div>
+      <div class="calc-row"><span class="cr-label">Work block 2 &nbsp;(7:00 PM → 12:45 AM, incl. on-site meal)</span><span class="cr-val">5h 45m</span></div>
+      <div class="calc-row"><span class="cr-label">Break 2 (not billable)</span><span class="cr-val">−15m</span></div>
+      <div class="calc-row"><span class="cr-label">Work block 3 &nbsp;(1:00 AM → 6:30 AM, incl. on-site meal)</span><span class="cr-val">5h 30m</span></div>
+      <div class="calc-row" style="font-weight:700;color:var(--text);border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:4px;"><span class="cr-label">Total billable</span><span class="cr-val">13h 30m</span></div>
+      <div class="calc-row"><span class="cr-label">Regular pay &nbsp;&nbsp;(0 → 10h @ 1.0×)</span><span class="cr-val">10h 0m</span></div>
+      <div class="calc-row ot-row"><span class="cr-label">Overtime &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(10h → 13h 30m @ 1.5×)</span><span class="cr-val">3h 30m OT</span></div>
+      <div class="calc-row penalty-row"><span class="cr-label">Meal penalty #1 &nbsp;(first break 45 min late) @ 1.5× hourly</span><span class="cr-val">+1 penalty</span></div>
+      <div class="calc-row penalty-row"><span class="cr-label">Meal penalty #2 &nbsp;(second meal 45 min late) @ 1.5× hourly</span><span class="cr-val">+1 penalty</span></div>
+      <div class="calc-row total-row"><span class="cr-label">Billed to company (gross)</span><span class="cr-val">10h reg + 3.5h OT + 2 penalties</span></div>
+    </div>
+
+    <!-- manual correction -->
+    <div class="correction-demo">
+      <h4>✏️ Manual Correction — PM Override</h4>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Scan type</label>
+          <div class="field-val"><span class="fi">↪</span> Site out ▾</div>
+          <div class="form-hint">Options: Site in · Break out · Break in · Provided meal · Site out</div>
+        </div>
+        <div class="form-field">
+          <label>Date &amp; time (local)</label>
+          <div class="field-val"><span class="fi">📅</span> 19/05/2026, 06:30 AM</div>
+          <div class="form-hint">Last scan: May 19 · 6:30 AM</div>
+        </div>
+        <div class="form-field">
+          <label>Reason</label>
+          <div class="field-val" style="color:var(--muted);">e.g. crew forgot to scan out</div>
+        </div>
+      </div>
+      <button class="add-btn">Add scan</button>
+      <div class="correction-explain">
+        <strong>When to use manual correction:</strong> If a crew member forgot to scan in or out, or scanned at the wrong time, the PM can add or remove any scan event with a free-text reason. Every correction is logged in a permanent edit history so the record is always auditable. Scans that were added manually are labelled <em>"Manual"</em> in the timeline (visible in all examples above).
+        <br><br>
+        <strong>All 5 scan types explained:</strong>
+        <br>• <strong>Site in</strong> — crew arrives on site; billable clock starts.
+        <br>• <strong>Break out</strong> — crew leaves the worksite for a break; clock pauses.
+        <br>• <strong>Break in</strong> — crew returns from break; clock resumes.
+        <br>• <strong>Provided meal</strong> — company catering delivered on-site. <strong>Clock does NOT stop.</strong> Records the company's obligation being met, but crew remains active. Does not satisfy labor-rule meal break requirements without an accompanying Break out/in.
+        <br>• <strong>Site out</strong> — crew departs; billable clock stops for the day.
+      </div>
+    </div>
+
+  </div><!-- /scan-demo-wrap -->
+
+  <!-- INVOICING -->
+  <div class="section-label">Invoicing &amp; Reconciliation</div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Finalization Auto-Creates Invoices</h3>
+      <p>When a PM finalizes attendance, the platform automatically creates a supplemental invoice for each crew member based on their actual vs. scheduled hours:</p>
+      <ul>
+        <li>Positive delta → submitted invoice, charged to company via ACH/card</li>
+        <li>Negative delta → credit invoice, becomes company credit balance</li>
+        <li>Zero delta or no-show → no invoice created</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Company Credit Ledger — Auto-Applies to Next Invoices</h3>
+      <p>When a crew member works fewer hours than committed, a <strong>credit invoice</strong> is auto-generated. The credit balance sits in the company's ledger and is <strong>automatically applied to the next invoice on the same job</strong> — oldest credit consumed first (FIFO).</p>
+      <ul>
+        <li>Credit is applied when you click <em>"Apply Credit"</em> on any pending invoice — no manual math needed</li>
+        <li>Crew payout is always the full invoice subtotal — only the <strong>company charge</strong> is reduced</li>
+        <li>If the credit fully covers an invoice, the company is charged <strong>$0.00</strong></li>
+        <li>Remaining unused credit carries forward to the next invoice cycle</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Labor Reconciliation in Payments Tab</h3>
+      <p>The Payments tab now has a <strong>Labor Reconciliation</strong> section showing committed pay vs. actual pay from confirmed attendance, with OT and DT dollars surfaced per crew member.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Request Refund to Bank — Company &amp; Admin Flow</h3>
+      <p>If unused credit remains after all invoices on a job are settled, the company can <strong>request a cash refund to their bank account</strong>. The request is reviewed and processed by a Show Crew Network admin:</p>
+      <ul>
+        <li>Company sees the credit balance on their Invoices tab with a refund request option</li>
+        <li>Admin portal shows a <strong>"Refund to Bank"</strong> button on the job's Invoices &amp; Credits section</li>
+        <li>Admin processes the refund directly — no Stripe dashboard access required</li>
+        <li>Full audit trail: every credit creation, application, and refund is logged</li>
+      </ul>
+    </div>
+
+    <!-- Live example -->
+    <div class="feature-card full" style="padding:0;overflow:hidden;">
+      <div style="padding:18px 22px 14px;border-bottom:1px solid var(--line);background:#f8faff;">
+        <span class="tag new" style="margin-bottom:8px;">✦ Live Example</span>
+        <h3 style="margin-top:6px;">Supplementary Invoices After Attendance Finalization</h3>
+        <p style="font-size:0.86rem;color:var(--muted);margin-top:6px;">Two crew members on the same job — one worked overtime (owed more), one worked fewer hours (company gets a credit).</p>
+      </div>
+
+      <!-- credit banner -->
+      <div style="background:#f0fdf4;border-bottom:1px solid #bbf7d0;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:0.86rem;font-weight:700;color:#15803d;">● $54.75 company credit available</span>
+        <span style="font-size:0.78rem;color:var(--muted);">Auto-applies when you click "Apply Credit" on an invoice below</span>
+      </div>
+
+      <!-- Invoice 1: Rishabh Doshi (positive — OT owed) -->
+      <div style="border-bottom:1px solid var(--line);">
+        <div style="padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div>
+            <div style="font-weight:700;font-size:0.92rem;">Rishabh Doshi</div>
+            <div style="font-size:0.78rem;color:var(--muted);">#16CA62CD · May 19, 2026 · 1 item</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-weight:800;font-size:1rem;">$9.38</span>
+            <span style="background:#dcfce7;color:#15803d;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Paid</span>
+          </div>
+        </div>
+        <div style="margin:0 22px 12px;background:#fafafa;border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
+            <div>
+              <span style="background:#fff7ed;color:#b45309;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Other</span>
+              <span style="font-size:0.86rem;">Overtime: 2.8h × $75/hr × 1.5</span>
+            </div>
+            <span style="font-weight:700;font-size:0.86rem;">$9.38</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;font-weight:800;font-size:0.86rem;color:var(--brand);">
+            <span>TOTAL</span><span>$9.38</span>
+          </div>
+        </div>
+        <div style="padding:0 22px 10px;font-size:0.78rem;color:var(--muted);">
+          <em>Auto-generated from attendance finalization. 1 day(s), 12.8h total billable.</em>
+          <span style="display:block;margin-top:4px;">Credit applied: <strong>$9.38</strong> → You'll be charged <strong style="color:#15803d;">$0.00</strong></span>
+        </div>
+      </div>
+
+      <!-- Invoice 2: Jenny Rosen (negative — credit) -->
+      <div>
+        <div style="padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div>
+            <div style="font-weight:700;font-size:0.92rem;">Jenny Rosen</div>
+            <div style="font-size:0.78rem;color:var(--muted);">#501B70BC · May 19, 2026 · 2 items</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-weight:800;font-size:1rem;color:#15803d;">−$64.13</span>
+            <span style="background:#dbeafe;color:#1d4ed8;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Credit</span>
+            <span style="background:#dcfce7;color:#15803d;font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;">Paid</span>
+          </div>
+        </div>
+        <div style="margin:0 22px 12px;background:#fafafa;border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
+            <div>
+              <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Credit</span>
+              <span style="font-size:0.86rem;">Overpayment refund: committed $700.00 vs actual $638.75</span>
+            </div>
+            <span style="font-weight:700;font-size:0.86rem;color:#15803d;">−$61.25</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
+            <div>
+              <span style="background:#dbeafe;color:#1d4ed8;font-size:0.68rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:8px;">Credit</span>
+              <span style="font-size:0.86rem;">Service fee refund (4.7% on $61.25)</span>
+            </div>
+            <span style="font-weight:700;font-size:0.86rem;color:#15803d;">−$2.88</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;font-weight:800;font-size:0.86rem;color:#15803d;">
+            <span>TOTAL</span><span>−$64.13</span>
+          </div>
+        </div>
+        <div style="padding:0 22px 10px;font-size:0.78rem;color:var(--muted);">
+          <em>Credit: crew worked 13.5h vs 20.0h committed. Refund of $61.25 + $2.88 service fee.</em>
+        </div>
+        <div style="margin:0 22px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:0.82rem;color:#15803d;font-weight:600;">
+          ✓ This credit will be applied to the next invoice cycle. No payment is required.
+        </div>
+      </div>
+
+      <!-- how-it-works explainer -->
+      <div style="background:#f8faff;border-top:2px solid var(--line);padding:16px 22px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="font-size:0.83rem;color:var(--muted);line-height:1.6;">
+          <strong style="color:var(--text);display:block;margin-bottom:4px;">How the credit cycle works</strong>
+          When Jenny worked 13.5h instead of the committed 20h, the platform calculated the overpayment ($700 committed − $638.75 actual = $61.25) plus the proportional service fee refund ($2.88). Both lines were combined into a single <strong>credit invoice</strong> of −$64.13, automatically approved and added to the company's credit balance.
+          <br><br>
+          Rishabh's overtime invoice of $9.38 was then settled by applying $9.38 of that credit — the company was charged $0.00.
+          The remaining <strong>$54.75</strong> sits as a credit balance ready for the next invoice.
+        </div>
+        <div style="font-size:0.83rem;color:var(--muted);line-height:1.6;">
+          <strong style="color:var(--text);display:block;margin-bottom:4px;">Want the cash back instead?</strong>
+          If no further invoices are expected on this job, the company can request a <strong>refund to bank</strong>. The request goes to a Show Crew Network admin who sees the $54.75 credit balance in the admin portal and processes the bank transfer with a single click — no Stripe dashboard needed.
+          <br><br>
+          The admin portal's <strong>Invoices &amp; Credits</strong> section on every job shows a <strong style="color:var(--brand);">"Refund to Bank" button</strong> alongside the full credit ledger for that job.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CALL TYPES & SKILLS -->
+  <div class="section-label">Call Types &amp; Skills</div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="tag fix">Change</span>
+      <h3>Onsite-Call Type Removed</h3>
+      <p><strong>onsite-call</strong> has been removed from all active call type lists — hidden from the call schedule pickers, AI schedule generation, and admin skill settings. Existing records that reference it remain readable for backwards compatibility.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag fix">Fix</span>
+      <h3>AI Position Suggestions Hardened</h3>
+      <p>The AI job-description assistant no longer suggests "General Crew" as a position. The prompt now enforces strict taxonomy-only suggestions, reducing off-list discipline noise in AI-generated crew positions.</p>
+    </div>
+  </div>
+
+  <!-- UX POLISH -->
+  <div class="section-label">UX &amp; Polish</div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Per-Tab Help Popovers</h3>
+      <p>Every tab on the Job Detail page now has a <strong>? help button</strong> in the top-right. Tapping it shows a plain-English explanation of what that tab does and how to use it — aimed at reducing first-time-user confusion.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag new">✦ New</span>
+      <h3>Collapsible Payments Sections</h3>
+      <p>All sections in the Payments tab (reconciliation, instalments, batch history, trigger rules) are now individually collapsible, keeping large-job payment views manageable.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag fix">Fix</span>
+      <h3>Platform Fee Per-Company</h3>
+      <p>Payment fee calculations now read <code>Company.platformFeePercent</code> from each company's record instead of defaulting to the global 5% constant. A backfill script was run to populate the field for all existing companies.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="tag fix">Fix</span>
+      <h3>Skills Query Scoped + Cached</h3>
+      <p>The skills list is now scoped to the active company (no cross-company data visible) and cached for 5 minutes with proper DynamoDB pagination — eliminating repeated expensive full-table scans.</p>
+    </div>
+  </div>
+
+  <!-- SCREENSHOTS -->
+  <div class="section-label">Screenshots</div>
+  <div class="photo-grid">
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+    <div class="photo-slot"><span class="icon">📸</span>Add screenshot</div>
+  </div>
+
+</main>
+
+<footer>
+  Show Crew Network &nbsp;·&nbsp; Weekly Update &nbsp;·&nbsp; May 20, 2026
+</footer>
+
 </body>
 </html>
