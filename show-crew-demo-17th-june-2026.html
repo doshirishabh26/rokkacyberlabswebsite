@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Crew Network — Demo 17th June 2026</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5f6b85;
+      --brand: #0f4aa3;
+      --brand-2: #1e7ef2;
+      --ok: #0f9d76;
+      --warn: #d17a00;
+      --line: #e3e8f1;
+      --shadow: 0 8px 24px rgba(16, 37, 72, 0.08);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .hero {
+      background: linear-gradient(120deg, #0d2147 0%, #0f4aa3 45%, #1e7ef2 100%);
+      color: #fff;
+      padding: 56px 24px 50px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .hero p { margin-top: 10px; opacity: 0.93; max-width: 880px; margin-left: auto; margin-right: auto; }
+    .meta {
+      margin-top: 16px;
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    section { margin-top: 22px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    h2 { font-size: 1.35rem; margin-bottom: 8px; color: #10224a; }
+    h3 { font-size: 1.05rem; margin-top: 18px; margin-bottom: 8px; color: #1a2a4f; }
+    p.sub { color: var(--muted); margin-bottom: 14px; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+    .kpi .label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
+    .kpi .value { font-size: 1.05rem; font-weight: 700; margin-top: 6px; color: #16264a; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; }
+    .done { background: #e7f8f2; color: var(--ok); }
+    .new { background: #e6f0ff; color: var(--brand-2); }
+    .focus { background: #fff5e8; color: var(--warn); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.93rem;
+      margin-top: 10px;
+    }
+    thead { background: #132b57; color: #fff; }
+    th, td { text-align: left; padding: 12px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) td { background: #fafcff; }
+    ul.tight { padding-left: 22px; margin: 6px 0 0; }
+    ul.tight li { margin: 4px 0; }
+    .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--brand-2);
+      background: #eef5ff;
+      border-radius: 0 10px 10px 0;
+      color: #23365b;
+      font-size: 0.9rem;
+    }
+    .warn-note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--warn);
+      background: #fff8ee;
+      border-radius: 0 10px 10px 0;
+      color: #5b3a14;
+      font-size: 0.9rem;
+    }
+    .demo-step {
+      counter-increment: step;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .demo-step:last-child { border-bottom: none; }
+    .demo-step::before {
+      content: "Step " counter(step) " · ";
+      color: var(--brand-2);
+      font-weight: 700;
+    }
+    .demo-script { counter-reset: step; }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding: 26px 16px 36px;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.7rem; }
+      .wrap { padding: 14px; }
+      .card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Show Crew Network — Demo 17th June 2026</h1>
+    <p>Real-time messaging goes live: IVS-backed 1:1 DMs, structured offer-negotiation chats with inline accept/counter/decline, reactions &amp; attachments, plus federal-rules admin and payroll-tax UI polish.</p>
+    <div class="meta">Show Crew Network &mdash; June 17, 2026</div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ─────────────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>1) Headline: Messaging is shipped</h2>
+      <p class="sub">Two surfaces, one chat engine. DMs are forever 1:1; Offer Negotiations are scoped to one application and drive the offer state machine. Both run on AWS IVS Chat with end-to-end unread/read tracking.</p>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">Direct messages</div><div class="value">crew↔crew, company↔crew, any stage</div></div>
+        <div class="kpi"><div class="label">Offer chats</div><div class="value">structured counter / accept / decline bubbles</div></div>
+        <div class="kpi"><div class="label">Reactions + attachments</div><div class="value">emoji + image/file uploads</div></div>
+        <div class="kpi"><div class="label">Single CTA per offer row</div><div class="value">Message / Counter (crew), Respond / Message (company)</div></div>
+        <div class="kpi"><div class="label">Crew sees company affiliation</div><div class="value">"via Acme Productions" on every company peer</div></div>
+        <div class="kpi"><div class="label">Federal rules admin</div><div class="value">4-eyes approval, same engine as state rules</div></div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>2) Shipped (Jun 11 → Jun 17)</h2>
+      <p class="sub">30+ production commits across <code>scn-backend</code> and <code>crew-platform</code>. Grouped by theme.</p>
+
+      <h3>IVS Chat — Direct Messages</h3>
+      <table>
+        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <tbody>
+          <tr><td>1:1 DM rooms on AWS IVS Chat</td><td>Per-conversation IVS room provisioned on first message and reused thereafter. Conversation id is <code>dm#userA#userB</code> with deterministic ordering so either side reaches the same thread.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Company → crew recruiting DMs</td><td>Relaxed the gate so a company can DM any crew that has applied to one of their jobs, at any application stage (not just hired). Surfaces real backend errors instead of a generic "Failed to start DM".</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Reactions + attachments</td><td>Emoji picker on every bubble, message reaction strip, image/file uploads with preview. Backed by S3 + presigned URLs.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Unread tracking that actually works</td><td>Phantom-unread badge killed (your own last message no longer marks the thread unread to yourself). Badge clears the moment a thread is opened. "Mark all as read" on the inbox.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Inbox polish</td><td>Job titles on every row, empty pseudo-rows dropped, peer avatars use CDN, browser back button navigates the thread, sidebar Messages defaults to <code>/messages/dms</code>.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Send retry + clickable sender names</td><td>Failed sends auto-retry with exponential backoff. Sender names are now links to crew profiles. Delete is mirrored in real time across all participants.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Company affiliation on crew DMs</td><td>Crew sees "via Acme Productions" next to a company peer's name across the list, thread header, composer, and inbox. Resolved at read time so company renames show up immediately.</td><td><span class="pill new">New</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Offer Negotiation Redesign</h3>
+      <table>
+        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <tbody>
+          <tr><td>Structured offer messages</td><td>Three message kinds in one thread: <code>text</code> (free-form), <code>counter</code> (rate + payroll type + cover letter), <code>decision</code> (accept / decline). Renders as native chat bubbles, not a separate form.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Inline accept / counter / decline</td><td>The most recent counter that isn't yours and isn't superseded shows inline action buttons. Older counters auto-display "Superseded by newer counter".</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Single CTA per offer row</td><td>Crew: one "Message / Counter" chip (handshake when actionable, chat bubble otherwise). Company: one chip that becomes a primary "Respond" CTA when the crew has countered and you owe a reply, otherwise a neutral "Message" affordance.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Crew counter form: rate type locked + event total preview</td><td>Crew can't change hourly↔daily↔weekly (only the company sets the cadence). Live preview shows full event total: <code>days × hoursPerDay × rate</code> for hourly, <code>days × rate</code> for daily.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Offer Negotiations list page</td><td>New <code>/messages/offers</code> surface separate from DMs, with its own sidebar entry and badge rollup. Each row shows peer + job title + last message + unread count.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Counter composer polish</td><td>"Send counter" is now a clean <code>RequestQuote</code> icon button next to the text composer. Counter panel opens as a primary-bordered card with header + inline close, then collapses back to the main textarea.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Crew accepts company counters</td><td>Backend wired so a crew member can accept the company's most recent counter, finalising <code>application.proposedRate</code> + <code>payrollType</code> in one click.</td><td><span class="pill new">New</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Payroll Tax — Admin &amp; Engine</h3>
+      <table>
+        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <tbody>
+          <tr><td>Federal Rules admin page</td><td>FICA / Medicare / FUTA / SS wage base now editable via a dedicated Federal Rules screen with the same 4-eyes pending → approve workflow used for states. Stored under sentinel <code>state = '__FEDERAL__'</code> in the existing rules table — no schema migration.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>State rules: hide OT / meal behind Advanced</td><td>State rule editor's primary form now only shows SUI / SDI / income-tax fields. Overtime + meal-break rules collapsed into an "Advanced" accordion per Peter's request.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>City Tax Rates page overhaul</td><td>Filters, bulk approve, side-by-side diff dialog, Δ pills on changed values, CSV export. Seed action populates the 26 cities we use today.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Sidebar exposure</td><td>Three separate sidebar entries: <strong>Federal Rules</strong>, <strong>State Rules</strong>, <strong>City Tax Rates</strong>. (Previously the federal + state pages existed but were unreachable.)</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Search debounce + full state names</td><td>Search input now debounced at 250ms; results show the full state name in the dropdown and tooltips instead of the 2-letter abbreviation.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Cron consolidation + 5 drift fixes</td><td>"Why two crons?" — payroll-tax cron now only refreshes city rates; state/federal handled by a separate monthly cron. Plus 5 P0/P1 fixes: drift email, missing local rates in worker, retry on throttle, etc.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>W2 invoice download for completed jobs</td><td>"Download W2 Invoice" button on the cost-estimate card of any completed job. Generates a 4-sheet xlsx (summary / earnings / employer tax / withholding).</td><td><span class="pill new">New</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Jobs / Positions / Budget Calc</h3>
+      <table>
+        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <tbody>
+          <tr><td>Multi-select call-sheet groups on positions</td><td>A position can now seed multiple Call Groups at hire time (e.g. <em>Show Crew</em> + <em>Load-In Crew</em>). Legacy single-hint field kept for backward compatibility.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Hide payroll-type on invite-only positions</td><td>Position editor hides the W2/1099 dropdown when the position is invite-only — classification is set in the Send Offer dialog instead.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Budget calc extras list locked down</td><td>Only Parking + Incidentals remain in the extras allow-list. Equipment Rental + Union Benefit Surcharge dropped (they were double-counting line items already covered elsewhere).</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Skills → Positions UI sweep</td><td>All remaining "Skills" labels on the company side renamed to "Positions" to match the backend model (Sprint 1 leftover).</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>AI schedule: job description outranks defaults</td><td>When generating a call schedule, the job description's explicit timing instructions now beat the default call-formula. Fixes the recurring "AI ignored my notes" complaint.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Notify-crew mirrors into job chat</td><td>SMS/email notify actions now also post a system message into the job chat so the team has a single source of truth for what was sent and when.</td><td><span class="pill new">New</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>3) Live Demo Script</h2>
+      <p class="sub">12-minute walk-through. Three personas: <strong>Best company</strong> (PM), <strong>Jenny Rosen</strong> (crew with an active offer), <strong>SCN admin</strong>.</p>
+      <div class="demo-script">
+        <div class="demo-step"><strong>Company → send a W2 offer.</strong> Best company → open the seeded "Beachball Interview with Shane" job → applications tab → send offer to Jenny with hourly $75. Click the new single "Message" chip on the row — opens the offer chat with one welcome system bubble.</div>
+        <div class="demo-step"><strong>Crew → see the offer chat.</strong> Log in as Jenny → sidebar shows a badge on <strong>Offer Negotiations</strong>. Click in → the new <code>/messages/offers</code> list shows "Jenny Rosen · Beachball Interview with Shane · This is nice offer, I have got, let me test it". Open the row.</div>
+        <div class="demo-step"><strong>Crew → counter.</strong> Click the "Send counter" icon next to the composer → counter card opens with payroll type + amount (rate type locked to hourly). Bump to $85 → preview line at the bottom shows "Event total ≈ $4,250 (5 days × 10h × $85)". Send.</div>
+        <div class="demo-step"><strong>Company → respond.</strong> Switch to company → the row chip is now a primary <strong>Respond</strong> CTA. Open → the counter bubble has inline [Accept] [Counter] [Decline]. Click Accept — chat shows a decision pill, the row chip flips back to neutral "Message".</div>
+        <div class="demo-step"><strong>DM flow.</strong> From the company side, click <em>Message</em> on a different applicant who hasn't been hired → DM opens (no offer chat). Note the "via Best company" tag on the crew's side once they reply.</div>
+        <div class="demo-step"><strong>Reactions + attachments.</strong> In any thread, react with 👍 on a bubble, then click the paperclip → upload a PDF call sheet → see the inline preview + downloadable chip on the other side.</div>
+        <div class="demo-step"><strong>Admin → Federal Rules.</strong> SCN admin → Federal Rules sidebar entry → propose a new FICA rate → second admin approves → row goes from pending → live with the same UX state-rules already had.</div>
+        <div class="demo-step"><strong>Admin → City Tax Rates.</strong> Open the overhauled City Tax Rates page → use the new state filter → bulk-approve 3 pending Detroit rows → click the diff icon to confirm the old vs new resident / non-resident split → CSV export.</div>
+        <div class="demo-step"><strong>W2 invoice for a completed job.</strong> Open any job marked completed → cost-estimate card → "Download W2 Invoice" → walk through the 4-sheet xlsx.</div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>4) Notes &amp; design decisions worth calling out</h2>
+      <div class="note">
+        <strong>Why DMs and Offer Negotiations are separate surfaces.</strong> Offer chats are bound to one application, drive <code>application.status</code>, archive on resolution, and carry the structured counter/decision bubbles. DMs are forever 1:1 and never archive. Mixing them would break the offer→job association and the Accept/Counter/Decline state machine.
+      </div>
+      <div class="note">
+        <strong>URL fragment delimiter fix.</strong> The DM conversation id format <code>dm#userA#userB</code> uses <code>#</code>, which is the URL fragment marker. We had to <code>encodeURIComponent</code> at every interpolation site (9 RTK Query templates + 6 navigate calls) — otherwise routes truncated to <code>/messages/dms/dm</code>. AWS IVS also rejects <code>#</code> in tag values, so room tags get sanitized.
+      </div>
+      <div class="note">
+        <strong>Federal sentinel pattern.</strong> Federal rules live in the same <code>scn-state-rules</code> DDB table with <code>state = '__FEDERAL__'</code>. This inherits the existing 4-eyes approval workflow with zero schema migration. <code>listStateRules</code> filters out the sentinel.
+      </div>
+      <div class="warn-note">
+        <strong>Still pending for next sprint.</strong> Cross-job persistent crew rosters (today every Call Group is scoped to a single job). Group DMs / threaded replies. Push notifications for mobile clients. Offer-chat search.
+      </div>
+    </section>
+
+  </main>
+
+  <div class="footer">
+    Show Crew Network · Internal demo · 17 June 2026
+  </div>
+</body>
+</html>
