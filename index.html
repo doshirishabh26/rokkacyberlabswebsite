@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show Crew Network — Demo 10th June 2026</title>
+  <title>Show Crew Network — Shipped Update (Last 6 Days)</title>
   <style>
     :root {
       --bg: #f7f8fb;
@@ -13,14 +13,13 @@
       --brand: #0f4aa3;
       --brand-2: #1e7ef2;
       --ok: #0f9d76;
-      --warn: #d17a00;
       --line: #e3e8f1;
       --shadow: 0 8px 24px rgba(16, 37, 72, 0.08);
       --radius: 14px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.55;
@@ -32,7 +31,7 @@
       text-align: center;
     }
     .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
-    .hero p { margin-top: 10px; opacity: 0.93; max-width: 880px; margin-left: auto; margin-right: auto; }
+    .hero p { margin-top: 10px; opacity: 0.93; max-width: 920px; margin-left: auto; margin-right: auto; }
     .meta {
       margin-top: 16px;
       display: inline-block;
@@ -45,7 +44,6 @@
     }
     .wrap { max-width: 1120px; margin: 0 auto; padding: 24px; }
     section { margin-top: 22px; }
-
     .card {
       background: var(--card);
       border: 1px solid var(--line);
@@ -69,14 +67,28 @@
       padding: 14px;
       background: #fbfdff;
     }
-    .kpi .label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
-    .kpi .value { font-size: 1.05rem; font-weight: 700; margin-top: 6px; color: #16264a; }
-
-    .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; }
-    .done { background: #e7f8f2; color: var(--ok); }
-    .new { background: #e6f0ff; color: var(--brand-2); }
-    .focus { background: #fff5e8; color: var(--warn); }
-
+    .kpi .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+    .kpi .value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: 6px;
+      color: #16264a;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #e7f8f2;
+      color: var(--ok);
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -87,13 +99,14 @@
       margin-top: 10px;
     }
     thead { background: #132b57; color: #fff; }
-    th, td { text-align: left; padding: 12px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th, td {
+      text-align: left;
+      padding: 12px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:nth-child(even) td { background: #fafcff; }
-
-    ul.tight { padding-left: 22px; margin: 6px 0 0; }
-    ul.tight li { margin: 4px 0; }
-
     .note {
       margin-top: 14px;
       padding: 12px 14px;
@@ -103,36 +116,18 @@
       color: #23365b;
       font-size: 0.9rem;
     }
-    .warn-note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--warn);
-      background: #fff8ee;
-      border-radius: 0 10px 10px 0;
-      color: #5b3a14;
-      font-size: 0.9rem;
-    }
-
-    .demo-step {
-      counter-increment: step;
-      padding: 12px 0;
-      border-bottom: 1px dashed var(--line);
-    }
-    .demo-step:last-child { border-bottom: none; }
-    .demo-step::before {
-      content: "Step " counter(step) " · ";
-      color: var(--brand-2);
+    .links a {
+      color: var(--brand);
+      text-decoration: none;
       font-weight: 700;
     }
-    .demo-script { counter-reset: step; }
-
+    .links a:hover { text-decoration: underline; }
     .footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.82rem;
       padding: 26px 16px 36px;
     }
-
     @media (max-width: 768px) {
       .hero h1 { font-size: 1.7rem; }
       .wrap { padding: 14px; }
@@ -142,139 +137,101 @@
 </head>
 <body>
   <header class="hero">
-    <h1>Show Crew Network — Demo 10th June 2026</h1>
-    <p>W2 payroll end-to-end: company-side classification at offer time, Cast &amp; Crew Excel handoff, resident vs non-resident local tax, crew home location, offer negotiation, and an SCN-managed payroll partner fee model.</p>
-    <div class="meta">Show Crew Network &mdash; June 10, 2026</div>
+    <h1>Show Crew Network — What We Shipped (Last 6 Days)</h1>
+    <p>Delivery summary for Jul 2 → Jul 8, 2026 across SCN backend, web platform, and mobile apps.</p>
+    <div class="meta">Updated: July 8, 2026</div>
   </header>
 
   <main class="wrap">
-
-    <!-- ─────────────────────────────────────────────────────────── -->
     <section class="card">
-      <h2>1) Headline: W2 Payroll, End-to-End</h2>
-      <p class="sub">Single-source-of-truth classification, accurate per-state &amp; per-city tax math, and a clean Cast &amp; Crew handoff. SCN does not touch W2 money — we generate the data, C&amp;C runs payroll.</p>
+      <h2>1) Headline</h2>
+      <p class="sub">This week shipped meaningful user-facing progress in attendance, chat, invoicing, company mobile finance workflows, and role/payment reliability.</p>
       <div class="kpi-grid">
-        <div class="kpi"><div class="label">W2 / 1099 chosen</div><div class="value">at offer time, source of truth</div></div>
-        <div class="kpi"><div class="label">Local tax</div><div class="value">resident vs non-resident, 26 cities seeded</div></div>
-        <div class="kpi"><div class="label">Cast &amp; Crew export</div><div class="value">4-sheet Excel batch on click</div></div>
-        <div class="kpi"><div class="label">Crew home location</div><div class="value">mandatory, blocks app until set</div></div>
-        <div class="kpi"><div class="label">C&amp;C onboarding gate</div><div class="value">W2 job publish requires C&amp;C ID</div></div>
-        <div class="kpi"><div class="label">Offer negotiation</div><div class="value">bidirectional messaging + counter-rate</div></div>
+        <div class="kpi"><div class="label">Window</div><div class="value">Jul 2 → Jul 8</div></div>
+        <div class="kpi"><div class="label">Repos covered</div><div class="value">scn-backend, crew-platform, scn-company-app, scn-crew-app</div></div>
+        <div class="kpi"><div class="label">Primary outcomes</div><div class="value">Attendance, Messaging, Invoices, Payments/Invoices mobile, Role & payment data reliability</div></div>
       </div>
     </section>
 
-    <!-- ─────────────────────────────────────────────────────────── -->
     <section class="card">
-      <h2>2) Shipped (Jun 4 → Jun 10)</h2>
-      <p class="sub">17 production deploys across <code>scn-backend</code> and <code>crew-platform</code> over the past week. Grouped by theme below.</p>
+      <h2>2) Shipped Features (Last 6 Days)</h2>
+      <p class="sub">Grouped by product outcome.</p>
 
-      <h3>W2 / 1099 Classification</h3>
+      <h3>Attendance &amp; Check-in</h3>
       <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <thead><tr><th style="width:38%">What shipped</th><th>User impact</th><th style="width:14%">Status</th></tr></thead>
         <tbody>
-          <tr><td>Company labor classification policy</td><td>W2 / 1099 / Both — set per-company in the Pay Policies tab. Locks the per-position payroll-type dropdown.</td><td><span class="pill done">Live</span></td></tr>
-          <tr><td>Per-position payroll-type override</td><td>Individual positions can be flagged W2 or 1099 regardless of company default (self-incorporated 1099s on a W2 job, etc).</td><td><span class="pill done">Live</span></td></tr>
-          <tr><td>Send Offer dialog — classification at offer time</td><td>When company policy is 'both', PM picks W2 or 1099 in the Send Offer dialog. Send button reads "Send W2 Offer" / "Send 1099 Offer" so it's impossible to fire by accident. <strong>Source of truth from offer time onwards.</strong></td><td><span class="pill new">New</span></td></tr>
-          <tr><td>W2 / 1099 chip on crew offer tile</td><td>Crew sees a chip on every offer in their My Jobs page — W2 (primary blue) or 1099 (grey) — with a tooltip explaining what each means for their paycheck.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Cast &amp; Crew onboarding gate</td><td>Publishing a W2 job (or flipping a position to W2) is blocked until <code>Company.castAndCrewCustomerId</code> is set by SCN admin.</td><td><span class="pill new">New</span></td></tr>
+          <tr><td>Global attendance scanning expanded (face + QR)</td><td>Teams can check in with more flexible flows across surfaces.</td><td><span class="pill">Live</span></td></tr>
+          <tr><td>Server geofence validation + scan location capture</td><td>Higher compliance accuracy and better audit trail on attendance events.</td><td><span class="pill">Live</span></td></tr>
         </tbody>
       </table>
 
-      <h3>Payroll Tax Engine</h3>
+      <h3>Messaging &amp; Notifications</h3>
       <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <thead><tr><th style="width:38%">What shipped</th><th>User impact</th><th style="width:14%">Status</th></tr></thead>
         <tbody>
-          <tr><td>PayrollTaxAPI live integration</td><td>DDB-cached federal + 50 states + DC. Monthly cron auto-refresh; admin manual override per row. SQS-throttled to stay under the 18.75 req/min free-tier limit.</td><td><span class="pill done">Live</span></td></tr>
-          <tr><td>Single-call sync (architectural)</td><td>Removed the wasted 2nd resident-view API call after confirming with PayrollTaxAPI docs that <code>residenceState</code> doesn't change the city-local rate returned. Resident rates now come from manual override.</td><td><span class="pill done">Live</span></td></tr>
-          <tr><td>Resident vs non-resident local tax</td><td>26 cities seeded with statutory resident rates as admin manual overrides: Detroit 2.4% / 1.2%, Highland Park 2.0% / 1.0%, all 22 other MI cities, Philadelphia 3.75% / 3.45%, NYC 3.876% / 0%, Yonkers 1.961% / 0.5%.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Per-crew rate resolver</td><td>W2 cost engine picks resident vs non-resident based on each crew member's <code>profile.location.city</code> matched against the work city. Falls back to non-resident with a UI warning if crew home unset.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Local tax flagged employee-side</td><td>"Local withholding (crew)" shows on the cost-estimate card as informational only — Cast &amp; Crew withholds it from the crew member's paycheck, so it doesn't change company cost.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Itemised burden breakdown with effective rates</td><td>Both the in-app Budget Calculator and the Job Details cost estimate now show <code>FUTA (X.XX%)</code>, <code>SUI (X.XX%)</code>, <code>Workers' Comp (blended X.XX%)</code>, <code>Local / other employer tax (X.XX%)</code> — back-derived from dollars so labels never lie.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Admin payroll-rules editor</td><td>FICA &amp; FUTA now read-only (federal, not state-specific). WC field flagged "Fallback only" since per-NCCI-class rates from Labor Types tab take precedence. Single "Last verified" timestamp at the state level.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>State + city merged into one view</td><td>Admin Payroll Rules page replaces the old separate State Rules + City Overrides tabs. State-grouped accordion with city overrides nested underneath.</td><td><span class="pill done">Live</span></td></tr>
-          <tr><td>Dead catalog table dropped</td><td>Cleaned up <code>dev-scn-payroll-tax-city-catalog</code> table + store + 5 unused scripts. One table (<code>payroll-tax-rates</code>) is now the single source of truth.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Video attachments in chat</td><td>Users can share richer context directly inside conversation threads.</td><td><span class="pill">Live</span></td></tr>
+          <tr><td>Read-receipt + notification-preference behavior improvements</td><td>Unread/read and notifications align better with user intent and settings.</td><td><span class="pill">Live</span></td></tr>
         </tbody>
       </table>
 
-      <h3>Cast &amp; Crew Excel Handoff</h3>
+      <h3>Crew Experience</h3>
       <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <thead><tr><th style="width:38%">What shipped</th><th>User impact</th><th style="width:14%">Status</th></tr></thead>
         <tbody>
-          <tr><td>"Generate W2 Payroll Batch" button</td><td>On the Job Details cost-estimate card. Visible only when the job has W2 hires. Downloads a .xlsx for forwarding to Cast &amp; Crew.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>4-sheet workbook</td><td><strong>Sheet 1:</strong> Job Summary (totals, pay period, crew count). <strong>Sheet 2:</strong> Per-crew Earnings (hours, OT/DT, gross, processor fees). <strong>Sheet 3:</strong> Employer Taxes (SS, Medicare, FUTA, SUI, SDI, WC, Local — dollars per crew). <strong>Sheet 4:</strong> Employee Withholding (FICA, federal &amp; state income placeholders, local based on home address with resident/non-resident class).</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Reuses cost-estimate engine</td><td>Hours and gross math is byte-identical to what the cost-estimate card shows. No double-bookkeeping.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Invoice visibility upgrades in crew app (preview + detail navigation)</td><td>Crew can better review and manage invoices from accepted job flows.</td><td><span class="pill">Live</span></td></tr>
+          <tr><td>Profile-photo completion enforcement in onboarding</td><td>Raises profile quality and downstream trust/review readiness.</td><td><span class="pill">Live</span></td></tr>
         </tbody>
       </table>
 
-      <h3>Crew Profile &amp; Onboarding</h3>
+      <h3>Company Experience</h3>
       <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <thead><tr><th style="width:38%">What shipped</th><th>User impact</th><th style="width:14%">Status</th></tr></thead>
         <tbody>
-          <tr><td>Home location mandatory</td><td>New onboarding step + non-dismissable modal on every protected route for existing crew without a home city. Required to (a) calculate correct payroll tax withholding and (b) auto-populate travel expense estimates.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Google Places autocomplete</td><td>Home city, venue, address — all use Google Places via a shared <code>LocationAutocomplete</code> component. Single tap auto-fills city/state/zip/lat/lng.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Company mobile app Payments + Invoices routes</td><td>Finance workflows are now available directly in mobile app navigation.</td><td><span class="pill">Live</span></td></tr>
+          <tr><td>Attendance UX polish for geofence/out-of-zone states</td><td>Clearer operator feedback during edge-case check-ins.</td><td><span class="pill">Live</span></td></tr>
         </tbody>
       </table>
 
-      <h3>Offer Negotiation</h3>
+      <h3>Admin / Roles / Payment Data Reliability</h3>
       <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
+        <thead><tr><th style="width:38%">What shipped</th><th>User impact</th><th style="width:14%">Status</th></tr></thead>
         <tbody>
-          <tr><td>Bidirectional offer-messaging</td><td>New <code>offer-messages</code> DDB table, endpoints on both company-api and crew-api, dialog UIs on both apps with role-coloured bubbles.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Counter-offer rate</td><td>Composer has an optional "Counter rate" toggle. When set, the message also updates <code>application.proposedRate</code> so accept-as-is honors the latest agreed terms.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>"Messages" chip per application</td><td>On the company applications tab + crew My Jobs page — opens the thread.</td><td><span class="pill new">New</span></td></tr>
-        </tbody>
-      </table>
-
-      <h3>Admin / Platform</h3>
-      <table>
-        <thead><tr><th style="width:38%">Feature</th><th>What changed</th><th style="width:14%">Status</th></tr></thead>
-        <tbody>
-          <tr><td>SCN-managed W2 partner fees</td><td>W2 per-check fee + processor % moved OFF the company UI (they revealed SCN's cost basis). Now hidden in a new "Payroll Partner (SCN-managed)" Paper card on the admin company detail page. Defaults seeded on every company at creation; per-company override for negotiated rates.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Cast &amp; Crew customer ID</td><td>New <code>Company.castAndCrewCustomerId</code> field on the same admin card. Required before publishing W2 jobs.</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Position-level shift assignment mode</td><td>New "Shift Assignment" dropdown on positions: All shifts (default) / Manual (PM picks per hire) / Auto (AI assigns based on availability + coverage gaps + skill tags).</td><td><span class="pill new">New</span></td></tr>
-          <tr><td>Extras list trimmed to events-only</td><td>Removed Per Diem / Travel / Flights / Hotels / Insurance — touring concepts not relevant for events. Kept Parking, Union Benefit Surcharge, Equipment Rental, Incidentals.</td><td><span class="pill done">Live</span></td></tr>
+          <tr><td>Permissions-first team role workflows + role labeling updates</td><td>More consistent role management and clearer permission boundaries.</td><td><span class="pill">Live</span></td></tr>
+          <tr><td>Commitment/payment metadata enrichment (crew + position context)</td><td>Improves downstream reporting and payment operations quality.</td><td><span class="pill">Live</span></td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- ─────────────────────────────────────────────────────────── -->
     <section class="card">
-      <h2>3) Live Demo Script</h2>
-      <p class="sub">15-minute walk-through. Three personas: <strong>Best company</strong> (W2-enabled), <strong>Rishabh Doshi</strong> (crew with home set in Elizabeth NJ), <strong>SCN admin</strong>.</p>
-      <div class="demo-script">
-        <div class="demo-step"><strong>Admin → set Cast &amp; Crew customer ID + W2 fee defaults.</strong> Companies → Best company → Payroll Partner card → enter <code>TEST-CC-001</code> (already seeded) and confirm 2.7% processor + $0 per-check are pre-filled.</div>
-        <div class="demo-step"><strong>Company → create W2 job (or open the seeded one).</strong> "W2 End-to-End Test — NYC Arena Show" at MSG. Walk through Job Type → Event Details (Google Places venue autocomplete) → Crew Positions (Payroll Classification picker shows W2).</div>
-        <div class="demo-step"><strong>Send Offer dialog.</strong> Pick a crew, send the offer. Note the "W2 Position" chip in the dialog title and the "Send W2 Offer" button.</div>
-        <div class="demo-step"><strong>Crew → My Jobs.</strong> Log in as Rishabh — offer tile shows the W2 chip with tooltip. Click into the offer.</div>
-        <div class="demo-step"><strong>Counter-offer.</strong> Open Messages → toggle "Counter rate" → bump to $85/hr → send. Switch to company → see the message + the application's proposedRate is now $85.</div>
-        <div class="demo-step"><strong>Cost Estimate.</strong> Back on the job detail, expand any W2 crew row in the breakdown: FICA (7.65%) + SUI (4.10%) + WC (per labor type) + <strong>Local / other employer tax (0.34% NYC MCTMT)</strong>. Local withholding (crew) shows as employee-side info, not in company cost.</div>
-        <div class="demo-step"><strong>Generate W2 Payroll Batch.</strong> Click the button on the cost-estimate card → .xlsx downloads → open in Excel → walk through the 4 sheets. Highlight the Employer Taxes sheet (state-aware labels: "State Unemployment SUI (NY)", "Local Employer Tax (New York)") and the Employee Withholding sheet showing resident/non-resident class per crew.</div>
-        <div class="demo-step"><strong>Crew home location gate.</strong> As a crew member without a home city set, refresh — the non-dismissable "Add your home city" modal appears. Wording references payroll tax + travel.</div>
-        <div class="demo-step"><strong>Admin → Payroll Rules.</strong> Expand NY → see the city overrides table with split <em>Resident</em> and <em>Non-Resident</em> columns. Edit any row → see FICA &amp; FUTA fields are read-only with "Federal — fixed" chips, WC is flagged "Fallback only".</div>
-      </div>
+      <h2>3) Traceability (Representative Commits)</h2>
+      <p class="sub">Commit sample used for the above summary.</p>
+      <table>
+        <thead><tr><th style="width:24%">Area</th><th>Repos</th><th>Commits</th></tr></thead>
+        <tbody>
+          <tr><td>Attendance</td><td>scn-backend, crew-platform, scn-company-app, scn-crew-app</td><td>baefffd, 99cd87b, 290bffc, 4483595, f01bacc, 88cfe9e, 04a093c, bf50a0d, f4cc181, 39ab126, e4576d7</td></tr>
+          <tr><td>Messaging</td><td>scn-backend, crew-platform, scn-company-app, scn-crew-app</td><td>dd9cbc8, ee96a73, 3ed1a2c, d551398, 5cba4f8, abf6e9c, 45c4a93, fb1ca29</td></tr>
+          <tr><td>Crew invoices &amp; onboarding</td><td>scn-crew-app, crew-platform</td><td>29b95c1, 6b79190, c492417, 87eabda, f60f1ed, a9d961c, 710c5fb, e718e6e, f8f0c69</td></tr>
+          <tr><td>Company mobile finance</td><td>scn-company-app</td><td>0398443, 9f25819, f4cc181, 39ab126</td></tr>
+          <tr><td>Roles &amp; payment metadata</td><td>crew-platform, scn-backend, scn-company-app</td><td>f8b9392, 0c8dfdd, efe0f3e, 9d25696, 1566249</td></tr>
+        </tbody>
+      </table>
     </section>
 
-    <!-- ─────────────────────────────────────────────────────────── -->
-    <section class="card">
-      <h2>4) Notes &amp; Open Items</h2>
+    <section class="card links">
+      <h2>4) Previous Demo Pages</h2>
+      <p class="sub">
+        <a href="./show-crew-demo-10th-june-2026.html">Demo — 10th June 2026</a><br>
+        <a href="./show-crew-demo-17th-june-2026.html">Demo — 17th June 2026</a>
+      </p>
       <div class="note">
-        <strong>SCN does not touch W2 money.</strong> Cast &amp; Crew is the Employer of Record — they invoice the company, run the paychecks, file 941s, and issue W2s at year-end. We hand off data via the Excel batch. This keeps us out of money-transmitter territory and aligns with the June 3 dev-meeting decision.
-      </div>
-      <div class="note">
-        <strong>PayrollTaxAPI doesn't model resident local rates.</strong> Verified by direct API testing — <code>residenceState=MI</code> still returns Detroit at 1.2%, not the resident 2.4%. So we treat the cached value as the non-resident rate and admin enters resident rates via the manual-override "Resident" field. 26 cities seeded; 1-hour ops task to add more when needed.
-      </div>
-      <div class="warn-note">
-        <strong>Paused per June 3 meeting:</strong> Complex overtime rule logic (blended W2 rates, IATSE OT premiums, 7th-day premium edge cases) is on hold pending Cast &amp; Crew clarification. The basic federal (40 hr/wk × 1.5) + CA daily (8 hr × 1.5, 12 hr × 2) + meal-penalty math works today and drives every estimate.
-      </div>
-      <div class="note">
-        <strong>Open follow-ups (next sprint):</strong> admin UI for editing per-company W2 fees inline (handler already exists, just wire the form), prominent "Download Payroll Batch" entry in the Job actions menu, and credit-card gateway alternatives to Stripe (deferred from earlier meeting).
+        This page is intended as a quick weekly shipment snapshot for leadership/status reviews.
       </div>
     </section>
-
   </main>
 
   <div class="footer">
-    Show Crew Network &copy; 2026 &mdash; Demo 10th June 2026
+    Show Crew Network &copy; 2026 &mdash; Weekly shipped update (last 6 days)
   </div>
 </body>
 </html>
